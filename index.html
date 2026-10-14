@@ -8,17 +8,20 @@
     <style>
       :root { --ink: #161616; --paper: #f8f7f3; --line: #ddddd8; --muted: #777771; }
       * { box-sizing: border-box; }
-      html, body { min-width: 320px; min-height: 100%; background: var(--ink); }
+      html, body { min-width: 320px; min-height: 100%; background: var(--paper); }
       body { margin: 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
       a { color: inherit; text-decoration: none; }
-      .site { width: min(92vw, 1180px); min-height: calc(100vh - 48px); margin: 24px auto; padding: 26px 36px 40px; background: var(--paper); }
+      .site { width: 100%; min-height: 100vh; margin: 0 auto; padding: 26px 36px 40px; background: var(--paper); }
       .view { display: none; }
       .view:target { display: block; }
       #home { display: block; }
       .view:target ~ #home { display: none; }
-      .site-header { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; font-size: 8px; line-height: 1; letter-spacing: -.04em; }
+      .site-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
       .site-header a { transition: opacity .18s ease; }
       .site-header a:hover { opacity: .48; }
+      .brand-link { font-size: clamp(42px, 5.9vw, 72px); font-weight: 400; letter-spacing: -.075em; line-height: .95; }
+      .back-link { display: inline-grid; place-items: center; width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 999px; font-size: 20px; line-height: 1; background: transparent; }
+      .back-link:hover { background: #efeeea; opacity: 1; }
       .home-title { margin: -2px 0 18px; font-size: clamp(42px, 5.9vw, 72px); font-weight: 400; letter-spacing: -.075em; line-height: .95; }
       .entry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
       .entry { display: block; }
@@ -30,42 +33,45 @@
       .page-head { margin-top: 72px; }
       .page-title { margin: 0; font-size: clamp(46px, 5.25vw, 72px); font-weight: 400; letter-spacing: -.075em; line-height: .9; }
       .page-intro { max-width: 620px; margin: 21px 0 42px; font-size: 13px; line-height: 1.27; letter-spacing: -.035em; }
-      .project-list { display: grid; gap: 46px; }
+      .project-list { display: grid; gap: 38px; max-width: 1100px; }
       .project { display: block; }
-      .project-visual { aspect-ratio: 1.55 / 1; background: #ededeb; }
+      .project-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .project-visual { aspect-ratio: 4 / 3; background: #ededeb; }
       .project-name { margin: 11px 0 0; font-size: 11px; font-weight: 400; letter-spacing: -.055em; line-height: 1; text-transform: uppercase; }
       .project-description { margin: 9px 0 0; color: var(--muted); font-size: 8px; line-height: 1.2; letter-spacing: -.025em; }
       .illustrated { border: 0; background: #d3d3d3; }
+      .variant-2 { filter: hue-rotate(18deg) brightness(1.06) saturate(1.05); }
+      .variant-3 { filter: brightness(.92) contrast(1.08) saturate(.92); }
       .art-nine { background: linear-gradient(117deg, rgba(27, 10, 0, .12), transparent 45%), radial-gradient(circle at 56% 43%, #c98460 0 10%, transparent 10.3%), linear-gradient(111deg, #8c634d 0 27%, #d09a79 28% 43%, #773b29 44% 57%, #b87e5c 58% 70%, #695144 71%); }
       .art-ray { background: linear-gradient(90deg, rgba(243,245,246,.75), rgba(80,83,90,.16)), radial-gradient(ellipse at 52% 26%, #3c3f43 0 10%, transparent 11%), linear-gradient(104deg, transparent 0 35%, #16181c 36% 55%, transparent 56%), #cfd1d4; filter: grayscale(1); }
       .brand-baala { background: linear-gradient(#0e0f17 0 62%, transparent 62%), radial-gradient(circle at 27% 22%, #bdd7e5 0 6%, #bd8d53 6.2% 7.2%, transparent 7.4%), linear-gradient(90deg, #f5f5f3 0 25%, #876c4a 25% 50%, #b7aaa0 50% 75%, #e6d7ca 75%); }
       .brand-coeur { background: radial-gradient(circle at 54% 65%, #ff7172 0 9%, transparent 9.2%), radial-gradient(circle at 65% 65%, #ffc2c2 0 8%, transparent 8.2%), linear-gradient(0deg, transparent 0 20%, rgba(255,255,255,.5) 20% 22%, transparent 22%), #dedddb; }
       .project-visual:not(.illustrated)::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 5px, rgba(255,255,255,.6) 5px 6px); }
       .index-link { display: inline-block; margin-top: 58px; font-size: 8px; letter-spacing: -.035em; }
-      @media (min-width: 760px) { .site { width: min(94vw, 1250px); padding: 18px 20px 42px; } .home-title { margin: 0 0 20px; } .page-head { margin-top: 93px; } .project-list { width: min(100%, 880px); } .project-visual { aspect-ratio: 1.63 / 1; } }
-      @media (min-width: 1000px) { .site { padding: 18px 20px 62px; } .page-head { margin-top: 113px; } .page-intro { margin-bottom: 58px; } .project-list { width: 100%; gap: 58px; } .project-visual { aspect-ratio: 1.68 / 1; } }
-      @media (max-width: 460px) { .site { width: calc(100vw - 32px); min-height: calc(100vh - 32px); margin: 16px; padding: 10px 10px 26px; } .home-title { margin: 4px 0 14px; font-size: clamp(33px, 10vw, 44px); } .entry-grid { gap: 8px; } .entry-visual { aspect-ratio: .67 / 1; } .entry-label { margin-top: 6px; font-size: 7px; } .page-head { margin-top: 57px; } .page-title { font-size: 39px; } .page-intro { margin: 17px 0 29px; font-size: 9px; line-height: 1.34; } .project-list { gap: 34px; } .project-name { margin-top: 8px; font-size: 8px; } .project-description { margin-top: 6px; font-size: 6px; } .index-link { margin-top: 45px; font-size: 6px; } }
+      @media (min-width: 760px) { .site { width: 100%; padding: 18px 20px 42px; } .home-title { margin: 0 0 20px; } .page-head { margin-top: 93px; } .project-list { width: min(100%, 880px); } .project-gallery { gap: 14px; } }
+      @media (min-width: 1000px) { .site { padding: 18px 20px 62px; } .page-head { margin-top: 113px; } .page-intro { margin-bottom: 48px; } .project-list { width: 100%; max-width: 1080px; gap: 46px; } }
+      @media (max-width: 460px) { .site { width: 100%; min-height: 100vh; margin: 0; padding: 10px 10px 26px; } .home-title { margin: 4px 0 14px; font-size: clamp(33px, 10vw, 44px); } .brand-link { font-size: clamp(33px, 10vw, 44px); } .back-link { width: 34px; height: 34px; font-size: 17px; } .entry-grid { gap: 8px; } .entry-visual { aspect-ratio: .67 / 1; } .entry-label { margin-top: 6px; font-size: 7px; } .page-head { margin-top: 57px; } .page-title { font-size: 39px; } .page-intro { margin: 17px 0 29px; font-size: 9px; line-height: 1.34; } .project-list { gap: 30px; } .project-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .project-gallery .project-visual:last-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; } .project-name { margin-top: 8px; font-size: 8px; } .project-description { margin-top: 6px; font-size: 6px; } .index-link { margin-top: 45px; font-size: 6px; } }
     </style>
   </head>
   <body>
     <main class="site" aria-label="Portfolio de Chloé Bastianon">
       <section class="view" id="artists" aria-labelledby="artists-title">
-        <header class="site-header"><a href="#home">Chloé Bastianon</a><a href="#home">Back</a></header>
+        <header class="site-header"><a class="brand-link" href="#home">Chloé Bastianon</a><a class="back-link" href="#home" aria-label="Return to index">←</a></header>
         <div class="page-head"><h1 class="page-title" id="artists-title">Artists</h1><p class="page-intro">I identify what makes an artist distinctive, clarify their intention, and translate it into a coherent creative identity. Three selected projects.</p></div>
         <div class="project-list">
-          <article class="project"><div class="project-visual illustrated art-nine" role="img" aria-label="Aperçu du projet Nine"></div><h2 class="project-name">Nine</h2><p class="project-description">An identity revealed from within</p></article>
-          <article class="project"><div class="project-visual illustrated art-ray" role="img" aria-label="Aperçu du projet Elliott Ray"></div><h2 class="project-name">Elliott Ray</h2><p class="project-description">From the instinct to a conscious identity</p></article>
-          <article class="project"><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Suze en attente"></div><h2 class="project-name">Suze</h2><p class="project-description">Accompanying an identity in formation</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual illustrated art-nine" role="img" aria-label="Aperçu du projet Nine — visuel 1"></div><div class="project-visual illustrated art-nine variant-2" role="img" aria-label="Aperçu du projet Nine — visuel 2"></div><div class="project-visual illustrated art-nine variant-3" role="img" aria-label="Aperçu du projet Nine — visuel 3"></div></div><h2 class="project-name">Nine</h2><p class="project-description">An identity revealed from within</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual illustrated art-ray" role="img" aria-label="Aperçu du projet Elliott Ray — visuel 1"></div><div class="project-visual illustrated art-ray variant-2" role="img" aria-label="Aperçu du projet Elliott Ray — visuel 2"></div><div class="project-visual illustrated art-ray variant-3" role="img" aria-label="Aperçu du projet Elliott Ray — visuel 3"></div></div><h2 class="project-name">Elliott Ray</h2><p class="project-description">From the instinct to a conscious identity</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Suze en attente — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Suze en attente — visuel 2"></div><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Suze en attente — visuel 3"></div></div><h2 class="project-name">Suze</h2><p class="project-description">Accompanying an identity in formation</p></article>
         </div>
         <a class="index-link" href="#home">Return to the index</a>
       </section>
       <section class="view" id="brands" aria-labelledby="brands-title">
-        <header class="site-header"><a href="#home">Chloé Bastianon</a><a href="#home">Back</a></header>
+        <header class="site-header"><a class="brand-link" href="#home">Chloé Bastianon</a><a class="back-link" href="#home" aria-label="Return to index">←</a></header>
         <div class="page-head"><h1 class="page-title" id="brands-title">Brands</h1><p class="page-intro">I clarify a brand's intention, audience and point of view, then translate them into a coherent visual and editorial identity. Three selected projects.</p></div>
         <div class="project-list">
-          <article class="project"><div class="project-visual illustrated brand-baala" role="img" aria-label="Aperçu du projet Baala"></div><h2 class="project-name">Baala</h2><p class="project-description">A cultural territory made tangible</p></article>
-          <article class="project"><div class="project-visual illustrated brand-coeur" role="img" aria-label="Aperçu du projet Le cœur &amp; la raison"></div><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A philosophy, a concept, a name, a visual, a podcast</p></article>
-          <article class="project"><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Cream en attente"></div><h2 class="project-name">Cream</h2><p class="project-description">An editorial eye on London</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual illustrated brand-baala" role="img" aria-label="Aperçu du projet Baala — visuel 1"></div><div class="project-visual illustrated brand-baala variant-2" role="img" aria-label="Aperçu du projet Baala — visuel 2"></div><div class="project-visual illustrated brand-baala variant-3" role="img" aria-label="Aperçu du projet Baala — visuel 3"></div></div><h2 class="project-name">Baala</h2><p class="project-description">A cultural territory made tangible</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual illustrated brand-coeur" role="img" aria-label="Aperçu du projet Le cœur &amp; la raison — visuel 1"></div><div class="project-visual illustrated brand-coeur variant-2" role="img" aria-label="Aperçu du projet Le cœur &amp; la raison — visuel 2"></div><div class="project-visual illustrated brand-coeur variant-3" role="img" aria-label="Aperçu du projet Le cœur &amp; la raison — visuel 3"></div></div><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A philosophy, a concept, a name, a visual, a podcast</p></article>
+          <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Cream en attente — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Cream en attente — visuel 2"></div><div class="project-visual pending" data-label="Project image pending" aria-label="Image du projet Cream en attente — visuel 3"></div></div><h2 class="project-name">Cream</h2><p class="project-description">An editorial eye on London</p></article>
         </div>
         <a class="index-link" href="#home">Return to the index</a>
       </section>
