@@ -65,10 +65,14 @@
       .brand-baala { background: linear-gradient(#0e0f17 0 62%, transparent 62%), radial-gradient(circle at 27% 22%, #bdd7e5 0 6%, #bd8d53 6.2% 7.2%, transparent 7.4%), linear-gradient(90deg, #f5f5f3 0 25%, #876c4a 25% 50%, #b7aaa0 50% 75%, #e6d7ca 75%); }
       .brand-coeur { background: radial-gradient(circle at 54% 65%, #ff7172 0 9%, transparent 9.2%), radial-gradient(circle at 65% 65%, #ffc2c2 0 8%, transparent 8.2%), linear-gradient(0deg, transparent 0 20%, rgba(255,255,255,.5) 20% 22%, transparent 22%), #dedddb; }
       .pending::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 12px; font-family: Oswald, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
-      .contact-box { max-width: 640px; margin: 0 auto; padding: 10px 20px 40px; text-align: center; }
-      .contact-box p { font-size: 14px; line-height: 1.5; }
-      .contact-mail { display: inline-block; margin-top: 14px; padding: 12px 22px; border: 1px solid var(--ink); border-radius: 999px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
-      .contact-mail:hover { background: var(--ink); color: #fff; }
+      .contact-box { max-width: 920px; margin: 0 auto; padding: 10px 20px 60px; text-align: center; }
+      .contact-intro { margin: 0; font-size: clamp(19px, 2.6vw, 28px); line-height: 1.4; letter-spacing: -.02em; }
+      .contact-cols { display: grid; grid-template-columns: 1fr auto 1fr; gap: 36px; align-items: stretch; margin-top: 52px; }
+      .contact-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+      .contact-divider { width: 1px; background: var(--line); }
+      .contact-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--ink); border-radius: 999px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+      .contact-btn:hover { background: var(--ink); color: #fff; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
         body.on-home { height: auto; overflow: visible; }
@@ -79,6 +83,8 @@
         .topnav { padding: 0; order: 2; font-size: 16px; justify-content: center; }
         .topbar-right { justify-content: center; width: 100%; }
         .topbar-right .topnav { margin-right: 0; }
+        .contact-cols { grid-template-columns: 1fr; gap: 34px; margin-top: 40px; }
+        .contact-divider { width: auto; height: 1px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -116,8 +122,18 @@
       <section class="view" id="contact" aria-labelledby="contact-title">
         <h1 class="category" id="contact-title">Contact</h1>
         <div class="contact-box">
-          <p>Direction créative, identité, éditorial.<br>Basée entre Paris et Londres — disponible pour collaborations.</p>
-          <a class="contact-mail" href="mailto:contact@chloebastianon.fr">contact@chloebastianon.fr</a>
+          <p class="contact-intro">Let's talk identity.<br>For artists and brands who want to clarify their intentions and find their deep identity.</p>
+          <div class="contact-cols">
+            <div class="contact-col">
+              <p class="contact-col-title">Book a 30-minute call with me</p>
+              <a class="contact-btn" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">Calendar</a>
+            </div>
+            <div class="contact-divider" aria-hidden="true"></div>
+            <div class="contact-col">
+              <p class="contact-col-title">Write to me directly</p>
+              <a class="contact-btn" href="mailto:bastianon.chloe@gmail.com">Mail</a>
+            </div>
+          </div>
         </div>
       </section>
 
