@@ -8,17 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Titan+One&display=swap" rel="stylesheet">
+    <script>try { history.scrollRestoration = 'manual'; } catch (e) {}</script>
     <style>
       :root { --ink: #0b0b0b; --paper: #ffffff; --line: #e8e8e6; --muted: #777771; --gutter: 40px; }
       * { box-sizing: border-box; }
+      html { scrollbar-gutter: stable; }
       html, body { min-width: 320px; min-height: 100%; background: var(--paper); }
       body { margin: 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
       a { color: inherit; text-decoration: none; }
       .site { width: 100%; min-height: 100vh; margin: 0 auto; padding: 0; background: var(--paper); }
       .view { display: none; }
-      .view:target { display: block; }
-      #home { display: block; }
-      .view:target ~ #home { display: none; }
+      .view.is-open { display: block; }
       #home { min-height: calc(100vh - 40px); }
       .view:not(#home) { padding-top: 26px; }
       /* Top bar façon ref : nav à gauche, nom centré */
@@ -111,7 +111,7 @@
         </div>
       </section>
 
-      <section class="view" id="home" aria-labelledby="home-title">
+      <section class="view is-open" id="home" aria-labelledby="home-title">
         <h1 id="home-title" hidden>Chloé Bastianon — accueil</h1>
         <div class="mosaic">
           <a class="tile" href="#artists"><span class="tile-visual illustrated art-nine" aria-hidden="true"></span><span class="tile-label">Artists</span></a>
@@ -120,7 +120,7 @@
       </section>
     </main>
     <script>
-      // Toujours arriver sur le header, scroll libre ensuite + état actif gris
+      // Navigation pilotée en JS : clic direct, header en priorité, sans saut
       function backToHeader() { window.scrollTo(0, 0); }
       function setActiveNav() {
         var h = window.location.hash || '#home';
@@ -129,12 +129,34 @@
           else { a.classList.remove('is-active'); a.removeAttribute('aria-current'); }
         });
       }
-      window.addEventListener('hashchange', function () {
-        requestAnimationFrame(function () { setTimeout(backToHeader, 0); });
+      function showView(hash) {
+        var id = (hash || '#home').replace('#', '') || 'home';
+        var found = false;
+        document.querySelectorAll('.view').forEach(function (s) {
+          var on = (s.id === id);
+          s.classList.toggle('is-open', on);
+          if (on) { found = true; }
+        });
+        if (!found) { document.getElementById('home').classList.add('is-open'); }
+        backToHeader();
         setActiveNav();
+      }
+      function goTo(hash) {
+        try { history.pushState(null, '', hash); }
+        catch (e) { try { window.location.hash = hash; } catch (_) {} }
+        showView(hash);
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var hash = a.getAttribute('href');
+          if (hash && hash.length > 1) { e.preventDefault(); goTo(hash); }
+        });
       });
-      if (window.location.hash) { backToHeader(); }
-      setActiveNav();
+      window.addEventListener('popstate', function () { showView(window.location.hash); });
+      window.addEventListener('hashchange', function () { showView(window.location.hash); });
+      document.addEventListener('DOMContentLoaded', function () { showView(window.location.hash); });
+      window.addEventListener('load', backToHeader);
+      showView(window.location.hash);
     </script>
   </body>
 </html>
