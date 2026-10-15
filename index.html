@@ -48,7 +48,7 @@
       .tile:hover { filter: brightness(.96); }
       .tile-visual { position: absolute; inset: 0; }
       /* Photos réelles : remplissage + grade chaud unifié pour la cohérence */
-      .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.94) contrast(1.03) sepia(.14); }
+      .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }
       .tile-label { position: absolute; left: 18px; bottom: 16px; font-family: Oswald, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
       .page-head { max-width: 760px; margin: 0 0 26px; padding: 0 var(--gutter); text-align: left; }
       .page-intro { margin: 0; font-size: 13px; line-height: 1.35; letter-spacing: -.02em; color: #444; }
@@ -116,8 +116,8 @@
       <section class="view" id="brands" aria-labelledby="brands-title">
         <h1 class="category" id="brands-title">Brands</h1>
         <div class="page-head"><p class="page-intro">I clarify a brand's intention, audience and point of view, then translate them into a coherent visual and editorial identity.</p></div>
-        <article class="project"><div class="project-gallery"><div class="project-visual illustrated brand-baala" role="img" aria-label="Baala — visuel 1"></div><div class="project-visual illustrated brand-baala variant-2" role="img" aria-label="Baala — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">A cultural territory made tangible</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual illustrated brand-coeur" role="img" aria-label="Le cœur et la raison — visuel 1"></div><div class="project-visual illustrated brand-coeur variant-2" role="img" aria-label="Le cœur et la raison — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A philosophy, a concept, a name, a visual, a podcast</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">A cultural territory made tangible</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/cr-1.jpg" alt="Le cœur et la raison — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/cr-2.jpg" alt="Le cœur et la raison — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A philosophy, a concept, a name, a visual, a podcast</p></div></article>
         <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Cream — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Cream — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Cream</h2><p class="project-description">An editorial eye on London</p></div></article>
       </section>
 
