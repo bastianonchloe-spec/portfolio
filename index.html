@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio de Chloé Bastianon — brand & identity specialist.">
+    <meta name="description" content="Portfolio de Chloé Bastianon — identity strategy & creative direction.">
     <title>Chloé Bastianon — Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,14 +24,14 @@
       /* Top bar façon ref : nav à gauche, nom centré */
       .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: 16px; padding-top: 34px; padding-bottom: 34px; padding-left: var(--gutter); padding-right: var(--gutter); background: var(--paper); overflow: hidden; }
       .topbar > * { min-width: 0; }
-      .topnav { display: flex; flex-wrap: wrap; row-gap: 8px; gap: 26px; margin: 0; padding: 0 0 23px; font-family: Oswald, Arial Narrow, sans-serif; font-size: 18px; font-weight: 600; line-height: 1; letter-spacing: .02em; text-transform: uppercase; max-width: 100%; }
+      .topnav { display: flex; flex-wrap: wrap; row-gap: 8px; gap: 26px; margin: 0; padding: 0 0 25px; font-family: Oswald, Arial Narrow, sans-serif; font-size: 18px; font-weight: 600; line-height: 1; letter-spacing: .02em; text-transform: uppercase; max-width: 100%; }
       .topnav a { transition: opacity .18s ease, color .18s ease; }
       .topnav a:hover { opacity: .45; }
       .topnav a.is-active { color: #9d9d9d; }
       .logo { display: block; text-align: left; line-height: 1; }
       .logo:hover { opacity: .92; }
       .logo-name { display: block; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: clamp(44px, 6.5vw, 84px); line-height: .84; letter-spacing: .005em; text-transform: uppercase; }
-      .logo-role { display: block; margin-top: 6px; text-align: right; font-size: 14px; font-weight: 700; letter-spacing: -.02em; }
+      .logo-role { display: block; margin-top: 6px; text-align: right; font-size: 16px; font-weight: 700; letter-spacing: -.02em; }
       .topbar-right { display: flex; justify-content: flex-end; min-height: 1px; }
       .topbar-right .topnav { margin-right: 5px; }
       .category { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -51,14 +51,14 @@
       .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }
       .tile-label { position: absolute; left: 18px; bottom: 16px; font-family: Oswald, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
       .page-head { max-width: 760px; margin: 0 0 26px; padding: 0 var(--gutter); text-align: left; }
-      .page-intro { margin: 0; font-size: 13px; line-height: 1.35; letter-spacing: -.02em; color: #444; }
+      .page-intro { position: relative; max-width: none; margin: 0; font-size: clamp(20px, 2.6vw, 30px); font-weight: 700; line-height: 1.25; letter-spacing: -.02em; }
       .project { display: flex; flex-direction: column; margin-bottom: 30px; }
       .project-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-left: var(--gutter); padding-right: var(--gutter); }
       .project-visual { aspect-ratio: 16 / 10; }
       .project-gallery .project-visual:last-child:nth-child(odd) { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
       .project-meta { order: -1; padding: 0 var(--gutter) 10px; }
-      .project-name { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
-      .project-description { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+      .project-name { margin: 0; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: .005em; text-transform: uppercase; }
+      .project-description { margin: 6px 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: -.02em; color: var(--muted); }
       .illustrated { background: #d3d3d3; }
       .variant-2 { filter: hue-rotate(18deg) brightness(1.06) saturate(1.05); }
       .variant-3 { filter: brightness(.92) contrast(1.08) saturate(.92); }
@@ -101,23 +101,21 @@
     <main class="site" aria-label="Portfolio de Chloé Bastianon">
       <header class="topbar">
         <nav class="topnav" aria-label="Navigation principale"><a href="#home">Accueil</a><a href="#contact">Contact</a></nav>
-        <a class="logo" href="#home" aria-label="Chloé Bastianon — accueil"><span class="logo-name">Chloé<br>Bastianon</span><span class="logo-role">brand &amp; identity specialist</span></a>
+        <a class="logo" href="#home" aria-label="Chloé Bastianon — accueil"><span class="logo-name">Chloé<br>Bastianon</span><span class="logo-role">identity strategy &amp; creative direction</span></a>
         <div class="topbar-right"><nav class="topnav" aria-label="Catégories"><a href="#artists">Artists</a><a href="#brands">Brands</a></nav></div>
       </header>
 
       <section class="view" id="artists" aria-labelledby="artists-title">
         <h1 class="category" id="artists-title">Artists</h1>
-        <div class="page-head"><p class="page-intro">I identify what makes an artist distinctive, clarify their intention, and translate it into a coherent creative identity.</p></div>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/neen-1.jpg" alt="Neen — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/neen-2.jpg" alt="Neen — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Neen</h2><p class="project-description">An identity revealed from within</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Eliott Ray</h2><p class="project-description">From the instinct to a conscious identity</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Suze — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Suze — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Suze</h2><p class="project-description">Accompanying an identity in formation</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/neen-1.jpg" alt="Neen — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/neen-2.jpg" alt="Neen — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Neen</h2><p class="project-description">Indie pop weaving human complexity with the organic world.</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Eliott Ray</h2><p class="project-description">Intimate, electric and unapologetically sensitive alternative pop.</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Suze — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Suze — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Suze</h2><p class="project-description">Blondie weirdness with a cosmovintage soul, wrapped in ultra-pop.</p></div></article>
       </section>
 
       <section class="view" id="brands" aria-labelledby="brands-title">
         <h1 class="category" id="brands-title">Brands</h1>
-        <div class="page-head"><p class="page-intro">I clarify a brand's intention, audience and point of view, then translate them into a coherent visual and editorial identity.</p></div>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">A cultural territory made tangible</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/cr-1.jpg" alt="Le cœur et la raison — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/cr-2.jpg" alt="Le cœur et la raison — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A philosophy, a concept, a name, a visual, a podcast</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">Contemporary fashion rooted in Tunisian heritage and the urban life of Paris and London.</p></div></article>
+        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/cr-1.jpg" alt="Le cœur et la raison — visuel 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/cr-2.jpg" alt="Le cœur et la raison — visuel 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Le cœur &amp; la raison</h2><p class="project-description">A podcast exploring the tension between heart and mind.</p></div></article>
         <article class="project"><div class="project-gallery"><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Cream — visuel 1"></div><div class="project-visual pending" data-label="Project image pending" role="img" aria-label="Cream — visuel 2"></div></div><div class="project-meta"><h2 class="project-name">Cream</h2><p class="project-description">An editorial eye on London</p></div></article>
       </section>
 
