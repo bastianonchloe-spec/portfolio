@@ -506,6 +506,10 @@
         var ancien = location.hash.replace('#', '').replace(/^\/+/, '');
         goTo((!ancien || ancien === 'home') ? '/' : '/' + ancien);
       }
+      // Adresses servies depuis un dossier (/artists/neen/) : on retire la barre oblique finale
+      if (!apercuLocal && /^\/.+\/$/.test(location.pathname)) {
+        try { history.replaceState(null, '', location.pathname.replace(/\/+$/, '') + location.search); } catch (e) {}
+      }
       window.addEventListener('popstate', function () { showView(cheminActuel()); });
       document.addEventListener('DOMContentLoaded', function () { showView(cheminActuel()); });
       window.addEventListener('load', backToHeader);

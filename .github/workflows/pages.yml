@@ -23,6 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Générer les pages par adresse (réponse 200)
+        run: python3 tools/generate_pages.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
