@@ -89,9 +89,10 @@
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
       /* Bloc projet entièrement cliquable */
-      .project-link { display: flex; flex-direction: column; }
+      .project-link { display: flex; flex-direction: column; cursor: pointer; }
       .project-visual { transition: filter .18s ease; }
-      .project-visual:hover { filter: brightness(.96); }
+      .project-link:hover .project-visual { filter: brightness(.9); }
+      .project-link:active .project-visual { filter: brightness(.86); }
       .project-name { transition: opacity .18s ease; }
       .project-name:hover { opacity: .5; }
       a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
