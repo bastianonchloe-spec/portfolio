@@ -125,10 +125,12 @@
         body.on-home .site { height: auto; display: block; }
         body.on-home #home.is-open { display: block; }
         body.on-home .tile { aspect-ratio: 1 / 1; }
-        .topbar { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 20px 16px 6px; }
-        .topnav { padding: 0; order: 2; font-size: 16px; justify-content: center; }
-        .topbar-right { align-items: center; justify-content: center; width: 100%; gap: 14px; }
-        .topbar-right .topnav { margin-right: 0; }
+        .topbar { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: clamp(11px, 4.6vw, 18px); row-gap: 4px; text-align: left; padding: 18px 16px 6px; }
+        .lang { order: 1; margin-left: auto; margin-right: 0; }
+        .logo { order: 2; flex: 1 0 100%; text-align: center; }
+        .topnav { order: 3; padding: 0; gap: clamp(11px, 4.6vw, 18px); font-size: clamp(13px, 4.2vw, 16px); justify-content: flex-start; }
+        .topbar-right { display: contents; }
+        .topbar-right .topnav { order: 4; margin-right: 0; }
         .contact-cols { grid-template-columns: 1fr; gap: 34px; }
         .contact-star img { width: 250px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
