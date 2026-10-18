@@ -108,6 +108,13 @@
       .pp-media.wide { aspect-ratio: 21 / 9; }
       .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; }
       .pp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .pp-video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(1.5) saturate(1.05) contrast(.97); transition: filter .25s ease, transform .3s ease; }
+      .pp-video:hover .pp-video-poster { filter: brightness(1.62) saturate(1.05) contrast(.97); transform: scale(1.012); }
+      .pp-video-play { position: absolute; inset: 0; display: grid; place-items: center; width: 100%; height: 100%; border: 0; background: none; cursor: pointer; }
+      .pp-video-tri { position: relative; display: block; width: clamp(58px, 6vw, 88px); height: clamp(58px, 6vw, 88px); border-radius: 50%; background: rgba(255, 255, 255, .94); box-shadow: 0 2px 20px rgba(0, 0, 0, .22); transition: transform .2s ease; }
+      .pp-video-tri::after { content: ""; position: absolute; left: 53%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: clamp(9px, 1vw, 13px) 0 clamp(9px, 1vw, 13px) clamp(15px, 1.6vw, 21px); border-color: transparent transparent transparent var(--ink); }
+      .pp-video-play:hover .pp-video-tri { transform: scale(1.07); }
+      .pp-video.is-playing .pp-video-poster, .pp-video.is-playing .pp-video-play { display: none; }
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
       @media (max-width: 760px) {
@@ -204,7 +211,7 @@
           <section class="pp-block">
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
             <p class="pp-text">The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support neen's identity across the project's existing imagery and applications. All her music is gathered at <a class="pp-link" href="https://neen.fm" target="_blank" rel="noopener">neen.fm</a>, a single link that redirects to every streaming platform.</p>
-            <figure class="pp-figure"><div class="pp-video"><iframe src="https://www.youtube.com/embed/-gjMbGog5sU" title="neen, music video" aria-label="neen, music video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></figure>
+            <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
           </section>
         </div>
       </section>
@@ -228,7 +235,7 @@
           <section class="pp-block">
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
             <p class="pp-text">The creative direction developed this tension into a distinctive visual territory, bringing together graphic experimentation, expressive imagery and live performance. The aim was to make the artist's singularity more legible while preserving the energy, vulnerability and unconventional spirit at the heart of the music.</p>
-            <figure class="pp-figure"><div class="pp-video"><iframe src="https://www.youtube.com/embed/p6-hxpffmqU" title="Eliott Ray, music video" aria-label="Eliott Ray, music video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></figure>
+            <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/p6-hxpffmqU?autoplay=1&amp;rel=0" data-title="Eliott Ray, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/p6-hxpffmqU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
           </section>
         </div>
       </section>
@@ -271,12 +278,12 @@
           <section class="pp-block">
             <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
             <p class="pp-text">The exploration examined how these different influences could coexist within a distinctive fashion identity. The focus was on translating cultural references, materials and attitudes into a visual language that balances rootedness with movement, and craftsmanship with the pace of city life.</p>
-            <figure class="pp-figure"><div class="pp-media wide pending" data-label="Project image pending" role="img" aria-label="Baala, exploration visual pending"></div></figure>
+            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/baala-2.jpg" alt="Baala, portrait, pale blue blazer and fur coat" loading="lazy"></div></figure>
           </section>
           <section class="pp-block">
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
             <p class="pp-text">The creative direction brings these influences together in a contemporary visual universe. Through the project's existing imagery and identity work, the intention is to express BAALA's dual belonging with confidence: heritage remains present through its meaning and sensibility, rather than becoming folklore. The collaboration also covered the brand's photoshoots, the design of its newsletter and the organisation of its Fashion Week event. BAALA's universe can be discovered at <a class="pp-link" href="https://www.studiobaala.com" target="_blank" rel="noopener">studiobaala.com</a>.</p>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/baala-2.jpg" alt="Baala, portrait, pale blue blazer and fur coat" loading="lazy"></div></figure>
+            <figure class="pp-figure"><div class="pp-media pending" data-label="BAALA event images coming soon" role="img" aria-label="BAALA event images coming soon"></div></figure>
           </section>
         </div>
       </section>
@@ -355,7 +362,7 @@
         "Pollen, concrete walls, warm lamp and wooden counter with the embroidered door panel": "Pollen, murs de béton, lampe chaude et comptoir en bois avec la porte brodée",
         "Pollen, the room: pink curtain, bottles on the pedestal table and wooden tables": "Pollen, la salle : rideau rose, bouteilles sur la table haute et tables en bois",
         "Suze, exploration visual pending": "Suze, visuel d'exploration à venir",
-        "Baala, exploration visual pending": "Baala, visuel d'exploration à venir",
+        "BAALA event images coming soon": "Images de l'évènement BAALA à venir",
         "Pollen, visual pending": "Pollen, visuel à venir",
         "neen is an indie-pop artist whose songwriting explores the complexity of human emotions through metaphors drawn from nature. Her music combines organic textures, reverb-soaked guitars and swirling melodies, creating a sensitive, contemplative world.": "neen est une artiste indie-pop dont l'écriture explore la complexité des émotions humaines à travers des métaphores empruntées à la nature. Sa musique mêle textures organiques, guitares saturées de reverb et mélodies tournoyantes, pour créer un univers sensible et contemplatif.",
         "The exploration focused on the relationship between the living world and human experience: how nature can express emotions that are difficult to name, and how tenderness and wonder can coexist with complexity. The aim was to develop a visual universe that echoed the organic, poetic sensibility already present in her music.": "L'exploration s'est concentrée sur la relation entre le vivant et l'expérience humaine : comment la nature peut dire des émotions difficiles à nommer, et comment la tendresse et l'émerveillement peuvent coexister avec la complexité. L'objectif était de développer un univers visuel faisant écho à la sensibilité organique et poétique déjà présente dans sa musique.",
@@ -370,6 +377,7 @@
         "View the Neen project": "Voir le projet Neen",
         "neen, music video": "neen, clip",
         "Eliott Ray, music video": "Eliott Ray, clip",
+        "Play the video": "Lire la vidéo",
         ", a single link that redirects to every streaming platform.": ", un lien unique qui redirige vers toutes les plateformes de streaming.",
         "View the Eliott Ray project": "Voir le projet Eliott Ray",
         "View the Suze project": "Voir le projet Suze",
@@ -417,11 +425,30 @@
       document.querySelectorAll('.lang button').forEach(function (b) {
         b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
       });
+      // Lecteurs vidéo : la vignette s'affiche immédiatement, YouTube ne se charge qu'au clic
+      document.querySelectorAll('.pp-video[data-embed]').forEach(function (bloc) {
+        bloc.addEventListener('click', function () {
+          if (bloc.classList.contains('is-playing')) { return; }
+          var f = document.createElement('iframe');
+          f.src = bloc.getAttribute('data-embed');
+          f.title = bloc.getAttribute('data-title') || 'Video';
+          f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          f.setAttribute('allowfullscreen', '');
+          bloc.appendChild(f);
+          bloc.classList.add('is-playing');
+        });
+      });
       // Navigation pilotée en JS : clic direct, header en priorité, sans saut
       function backToHeader() { window.scrollTo(0, 0); }
       // Aperçu local (fichier ouvert directement) : l'URL ne bouge pas, la navigation reste en mémoire
       var apercuLocal = (location.protocol === 'file:');
       var cheminLocal = '/';
+      // Aperçu local : un ancien lien en dièse (#artists) ouvre la bonne page, puis l'URL est nettoyée si le navigateur le permet
+      if (apercuLocal && location.hash.length > 1) {
+        var ancienLocal = location.hash.replace(/^#\/?/, '');
+        if (document.getElementById(ancienLocal)) { cheminLocal = ancienLocal; }
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      }
       function cheminActuel() {
         if (apercuLocal) { return cheminLocal; }
         return location.pathname.replace(/\/index\.html?$/i, '/').replace(/\/404\.html?$/i, '/');
