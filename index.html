@@ -87,8 +87,12 @@
       .contact-star:hover img { transform: scale(1.06); }
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
-      .project-name a { display: inline-block; }
-      .project-name a:hover { opacity: .5; }
+      /* Bloc projet entièrement cliquable */
+      .project-link { display: flex; flex-direction: column; }
+      .project-visual { transition: filter .18s ease; }
+      .project-visual:hover { filter: brightness(.96); }
+      .project-name { transition: opacity .18s ease; }
+      .project-name:hover { opacity: .5; }
       a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
       /* Page projet */
       .project-page { padding-bottom: 56px; }
@@ -96,11 +100,16 @@
       .pp-name { margin: 0; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: 24px; font-weight: 400; line-height: 1; letter-spacing: .005em; text-transform: uppercase; }
       .pp-desc { margin: 10px 0 0; max-width: 720px; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.4; letter-spacing: -.02em; color: var(--muted); }
       .pp-block { margin: 52px 0 0; }
-      .pp-label { margin: 0 0 12px; max-width: 720px; font-family: Oswald, Arial Narrow, sans-serif; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+      .pp-label { margin: 0 0 12px; max-width: 720px; font-family: Oswald, Arial Narrow, sans-serif; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
       .pp-text { margin: 0; max-width: 720px; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
       .pp-figure { margin: 26px 0 0; padding: 0 var(--gutter); }
       .pp-media { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
       .pp-media.wide { aspect-ratio: 21 / 9; }
+      .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; }
+      .pp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .pp-star { display: flex; justify-content: center; margin: 34px 0 0; padding: 0 var(--gutter); }
+      .pp-star .contact-star img { width: clamp(170px, 22vw, 260px); }
+      .pp-star .contact-star span { font-size: 19px; letter-spacing: .02em; text-transform: none; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
         .pp-block { margin-top: 34px; }
@@ -127,22 +136,22 @@
   <body>
     <main class="site" aria-label="Chloé Bastianon, portfolio">
       <header class="topbar">
-        <nav class="topnav" aria-label="Main navigation"><a href="#home">Home</a><a href="#contact">Contact</a></nav>
-        <a class="logo" href="#home" aria-label="Chloé Bastianon, home"><span class="logo-name">Chloé<br>Bastianon</span><span class="logo-role">identity strategy &amp; creative direction</span></a>
-        <div class="topbar-right"><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang-sep" aria-hidden="true">/</span><button type="button" data-lang="fr" aria-pressed="false">FR</button></div><nav class="topnav" aria-label="Categories"><a href="#artists">Artists</a><a href="#brands">Brands</a></nav></div>
+        <nav class="topnav" aria-label="Main navigation"><a href="/">Home</a><a href="/contact">Contact</a></nav>
+        <a class="logo" href="/" aria-label="Chloé Bastianon, home"><span class="logo-name">Chloé<br>Bastianon</span><span class="logo-role">identity strategy &amp; creative direction</span></a>
+        <div class="topbar-right"><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang-sep" aria-hidden="true">/</span><button type="button" data-lang="fr" aria-pressed="false">FR</button></div><nav class="topnav" aria-label="Categories"><a href="/artists">Artists</a><a href="/brands">Brands</a></nav></div>
       </header>
 
       <section class="view" id="artists" aria-labelledby="artists-title">
         <h1 class="category" id="artists-title">Artists</h1>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/neen-1.jpg" alt="Neen, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/neen-2.jpg" alt="Neen, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name"><a href="#artists/neen">Neen</a></h2><p class="project-description">Indie pop weaving human complexity with the organic world.</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name"><a href="#artists/eliott-ray">Eliott Ray</a></h2><p class="project-description">Intimate, electric and unapologetically sensitive alternative pop.</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/suze-1.jpg" alt="Suze, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/suze-2.jpg" alt="Suze, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name"><a href="#artists/suze">Suze</a></h2><p class="project-description">Blondie weirdness with a cosmovintage soul, wrapped in ultra-pop.</p></div></article>
+        <article class="project"><a class="project-link" href="/artists/neen" aria-label="View the Neen project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/neen-1.jpg" alt="neen, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/neen-2.jpg" alt="neen, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Neen</h2><p class="project-description">Indie pop weaving human complexity with the organic world.</p></div></a></article>
+        <article class="project"><a class="project-link" href="/artists/eliott-ray" aria-label="View the Eliott Ray project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Eliott Ray</h2><p class="project-description">Intimate, electric and unapologetically sensitive alternative pop.</p></div></a></article>
+        <article class="project"><a class="project-link" href="/artists/suze" aria-label="View the Suze project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/suze-1.jpg" alt="Suze, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/suze-2.jpg" alt="Suze, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Suze</h2><p class="project-description">Blondie weirdness with a cosmovintage soul, wrapped in ultra-pop.</p></div></a></article>
       </section>
 
       <section class="view" id="brands" aria-labelledby="brands-title">
         <h1 class="category" id="brands-title">Brands</h1>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name"><a href="#brands/baala">Baala</a></h2><p class="project-description">Contemporary fashion rooted in Tunisian heritage and the urban life of Paris and London.</p></div></article>
-        <article class="project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/pollen-1.jpg" alt="Pollen, café interior with the wooden counter and embroidered door panel" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/pollen-2.jpg" alt="Pollen, room with the pink curtain, bottles and wooden tables" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name"><a href="#brands/pollen">Pollen</a></h2><p class="project-description">A café with Danish design influences, where the charm of local organic materials, wood and traditional embroidered tablecloths, meets quintessentially minimalist design.</p></div></article>
+        <article class="project"><a class="project-link" href="/brands/baala" aria-label="View the Baala project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">Contemporary fashion rooted in Tunisian heritage and the urban life of Paris and London.</p></div></a></article>
+        <article class="project"><a class="project-link" href="/brands/pollen" aria-label="View the Pollen project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/pollen-1.jpg" alt="Pollen, café interior with the wooden counter and embroidered door panel" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/pollen-2.jpg" alt="Pollen, room with the pink curtain, bottles and wooden tables" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Pollen</h2><p class="project-description">A café with Danish design influences, where the charm of local organic materials, wood and traditional embroidered tablecloths, meets quintessentially minimalist design.</p></div></a></article>
       </section>
 
       <section class="view" id="contact" aria-labelledby="contact-title">
@@ -171,8 +180,8 @@
       <section class="view is-open" id="home" aria-labelledby="home-title">
         <h1 id="home-title" hidden>Chloé Bastianon, home</h1>
         <div class="mosaic">
-          <a class="tile" href="#artists"><img class="photo" src="assets/home-1.jpg" alt="Artists" loading="eager"><span class="tile-label">Artists</span></a>
-          <a class="tile" href="#brands"><img class="photo" src="assets/home-2.jpg" alt="Brands" loading="eager"><span class="tile-label">Brands</span></a>
+          <a class="tile" href="/artists"><img class="photo" src="assets/home-1.jpg" alt="Artists" loading="eager"><span class="tile-label">Artists</span></a>
+          <a class="tile" href="/brands"><img class="photo" src="assets/home-2.jpg" alt="Brands" loading="eager"><span class="tile-label">Brands</span></a>
         </div>
       </section>
 
@@ -184,18 +193,20 @@
           </header>
           <section class="pp-block">
             <h2 class="pp-label">THE STARTING POINT</h2>
-            <p class="pp-text">NEEN is an indie-pop artist whose songwriting explores the complexity of human emotions through metaphors drawn from nature. Her music combines organic textures, reverb-soaked guitars and swirling melodies, creating a sensitive, contemplative world.</p>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-1.jpg" alt="Neen, the artist crouching by the sea" loading="lazy"></div></figure>
+            <p class="pp-text">neen is an indie-pop artist whose songwriting explores the complexity of human emotions through metaphors drawn from nature. Her music combines organic textures, reverb-soaked guitars and swirling melodies, creating a sensitive, contemplative world.</p>
+            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-1.jpg" alt="neen, the artist crouching by the sea" loading="lazy"></div></figure>
           </section>
           <section class="pp-block">
             <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
             <p class="pp-text">The exploration focused on the relationship between the living world and human experience: how nature can express emotions that are difficult to name, and how tenderness and wonder can coexist with complexity. The aim was to develop a visual universe that echoed the organic, poetic sensibility already present in her music.</p>
-            <figure class="pp-figure"><div class="pp-media wide pending" data-label="Project image pending" role="img" aria-label="Neen, exploration visual pending"></div></figure>
+            <figure class="pp-figure"><div class="pp-media wide pending" data-label="Project image pending" role="img" aria-label="neen, exploration visual pending"></div></figure>
           </section>
           <section class="pp-block">
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <p class="pp-text">The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support NEEN's identity across the project's existing imagery and applications.</p>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-2.jpg" alt="Neen, the artist with arms raised by the water" loading="lazy"></div></figure>
+            <p class="pp-text">The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support neen's identity across the project's existing imagery and applications.</p>
+            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-2.jpg" alt="neen, the artist with arms raised by the water" loading="lazy"></div></figure>
+            <figure class="pp-figure"><div class="pp-video"><iframe src="https://www.youtube.com/embed/-gjMbGog5sU" title="neen, music video" aria-label="neen, music video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></figure>
+            <div class="pp-star"><a class="contact-star is-pink" href="https://neen.fm" target="_blank" rel="noopener" aria-label="Visit neen.fm"><img src="assets/star-pink.png" alt="" width="576" height="576"><span>neen.fm</span></a></div>
           </section>
         </div>
       </section>
@@ -325,16 +336,16 @@
         "Write to me directly": "Écrivez-moi directement",
         "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
         "Project image pending": "Visuel à venir",
-        "Neen, visual 1": "Neen, visuel 1",
-        "Neen, visual 2": "Neen, visuel 2",
+        "neen, visual 1": "neen, visuel 1",
+        "neen, visual 2": "neen, visuel 2",
         "Eliott Ray, visual 1": "Eliott Ray, visuel 1",
         "Eliott Ray, visual 2": "Eliott Ray, visuel 2",
         "Suze, visual 1": "Suze, visuel 1",
         "Suze, visual 2": "Suze, visuel 2",
         "Baala, visual 1": "Baala, visuel 1",
         "Baala, visual 2": "Baala, visuel 2",
-        "Neen, the artist crouching by the sea": "Neen, l'artiste accroupie devant la mer",
-        "Neen, the artist with arms raised by the water": "Neen, l'artiste bras levés au bord de l'eau",
+        "neen, the artist crouching by the sea": "neen, l'artiste accroupie devant la mer",
+        "neen, the artist with arms raised by the water": "neen, l'artiste bras levés au bord de l'eau",
         "Eliott Ray, frontal black-and-white portrait": "Eliott Ray, portrait frontal en noir et blanc",
         "Eliott Ray, blurred moving silhouette": "Eliott Ray, silhouette en mouvement flou",
         "Suze, blue-wigged character lying on a fur throw": "Suze, personnage en perruque bleue allongé sur une peau de bête",
@@ -345,14 +356,14 @@
         "Pollen, room with the pink curtain, bottles and wooden tables": "Pollen, la salle, rideau rose, bouteilles et tables en bois",
         "Pollen, concrete walls, warm lamp and wooden counter with the embroidered door panel": "Pollen, murs de béton, lampe chaude et comptoir en bois avec la porte brodée",
         "Pollen, the room: pink curtain, bottles on the pedestal table and wooden tables": "Pollen, la salle : rideau rose, bouteilles sur la table haute et tables en bois",
-        "Neen, exploration visual pending": "Neen, visuel d'exploration à venir",
+        "neen, exploration visual pending": "neen, visuel d'exploration à venir",
         "Eliott Ray, exploration visual pending": "Eliott Ray, visuel d'exploration à venir",
         "Suze, exploration visual pending": "Suze, visuel d'exploration à venir",
         "Baala, exploration visual pending": "Baala, visuel d'exploration à venir",
         "Pollen, visual pending": "Pollen, visuel à venir",
-        "NEEN is an indie-pop artist whose songwriting explores the complexity of human emotions through metaphors drawn from nature. Her music combines organic textures, reverb-soaked guitars and swirling melodies, creating a sensitive, contemplative world.": "NEEN est une artiste indie-pop dont l'écriture explore la complexité des émotions humaines à travers des métaphores empruntées à la nature. Sa musique mêle textures organiques, guitares saturées de reverb et mélodies tournoyantes, pour créer un univers sensible et contemplatif.",
+        "neen is an indie-pop artist whose songwriting explores the complexity of human emotions through metaphors drawn from nature. Her music combines organic textures, reverb-soaked guitars and swirling melodies, creating a sensitive, contemplative world.": "neen est une artiste indie-pop dont l'écriture explore la complexité des émotions humaines à travers des métaphores empruntées à la nature. Sa musique mêle textures organiques, guitares saturées de reverb et mélodies tournoyantes, pour créer un univers sensible et contemplatif.",
         "The exploration focused on the relationship between the living world and human experience: how nature can express emotions that are difficult to name, and how tenderness and wonder can coexist with complexity. The aim was to develop a visual universe that echoed the organic, poetic sensibility already present in her music.": "L'exploration s'est concentrée sur la relation entre le vivant et l'expérience humaine : comment la nature peut dire des émotions difficiles à nommer, et comment la tendresse et l'émerveillement peuvent coexister avec la complexité. L'objectif était de développer un univers visuel faisant écho à la sensibilité organique et poétique déjà présente dans sa musique.",
-        "The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support NEEN's identity across the project's existing imagery and applications.": "La direction créative cherche à inscrire cette sensibilité dans un univers artistique cohérent, reliant la musique à son expression visuelle. La direction qui en résulte s'appuie sur des références organiques, l'atmosphère et l'émotion pour soutenir l'identité de NEEN dans les images et applications existantes du projet.",
+        "The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support neen's identity across the project's existing imagery and applications.": "La direction créative cherche à inscrire cette sensibilité dans un univers artistique cohérent, reliant la musique à son expression visuelle. La direction qui en résulte s'appuie sur des références organiques, l'atmosphère et l'émotion pour soutenir l'identité de neen dans les images et applications existantes du projet.",
         "ELIOTT RAY is an alternative-pop artist whose music combines electronic energy with intimate songwriting. His artistic world brings together vulnerability, directness and a distinctive take on masculinity, exploring love, solitude and the feeling of sometimes standing apart from the world.": "ELIOTT RAY est un artiste pop alternative dont la musique mêle énergie électronique et écriture intime. Son univers rassemble vulnérabilité, franchise et un rapport singulier à la masculinité, explorant l'amour, la solitude et le sentiment d'être parfois en décalage avec le monde.",
         "The exploration centred on the tension between sensitivity and intensity: intimate emotions expressed through electric, frontal music. The challenge was to articulate this complex personality without smoothing out its contradictions, and to create a territory that could feel both raw and carefully considered.": "L'exploration s'est centrée sur la tension entre sensibilité et intensité : des émotions intimes exprimées par une musique électrique et frontale. Le défi était d'articuler cette personnalité complexe sans lisser ses contradictions, et de créer un territoire à la fois brut et précisément pensé.",
         "The creative direction developed this tension into a distinctive visual territory, bringing together graphic experimentation, expressive imagery and live performance. The aim was to make the artist's singularity more legible while preserving the energy, vulnerability and unconventional spirit at the heart of the music.": "La direction créative a développé cette tension en un territoire visuel singulier, réunissant expérimentation graphique, images expressives et scène. L'objectif : rendre la singularité de l'artiste plus lisible, tout en préservant l'énergie, la vulnérabilité et l'esprit non conventionnel au cœur de la musique.",
@@ -360,6 +371,13 @@
         "The exploration focuses on the contrasts that give SUZE its personality: pop immediacy and otherworldly references, familiar imagery and eccentric details, playful energy and cosmic nostalgia. The intention is to identify the strongest recurring elements without closing down the project's potential too early.": "L'exploration porte sur les contrastes qui font la personnalité de SUZE : immédiateté pop et références venues d'ailleurs, imagerie familière et détails excentriques, énergie ludique et nostalgie cosmique. L'intention est d'identifier les éléments récurrents les plus forts sans fermer trop tôt le potentiel du projet.",
         "The visual explorations aim to give this emerging universe greater coherence while keeping it open to evolution. Rather than presenting a finished identity, the work establishes creative directions and visual possibilities that can be developed as SUZE's artistic project takes shape.": "Les explorations visuelles visent à donner plus de cohérence à cet univers naissant tout en le laissant ouvert à l'évolution. Plutôt que de présenter une identité achevée, le travail établit des directions créatives et des possibilités visuelles à développer au fil du projet artistique de SUZE.",
         "BAALA is a contemporary fashion brand shaped by two cultural influences: Tunisian heritage and urban life in Paris and London. The challenge was to bring these references together in a way that felt natural and contemporary, without reducing cultural heritage to a decorative motif.": "BAALA est une marque de mode contemporaine façonnée par deux influences culturelles : l'héritage tunisien et la vie urbaine à Paris et Londres. Le défi était de réunir ces références de manière naturelle et contemporaine, sans réduire l'héritage culturel à un motif décoratif.",
+        "View the Neen project": "Voir le projet Neen",
+        "neen, music video": "neen, clip",
+        "Visit neen.fm": "Visiter neen.fm",
+        "View the Eliott Ray project": "Voir le projet Eliott Ray",
+        "View the Suze project": "Voir le projet Suze",
+        "View the Baala project": "Voir le projet Baala",
+        "View the Pollen project": "Voir le projet Pollen",
         "The exploration examined how these different influences could coexist within a distinctive fashion identity. The focus was on translating cultural references, materials and attitudes into a visual language that balances rootedness with movement, and craftsmanship with the pace of city life.": "L'exploration a examiné comment ces influences pouvaient coexister dans une identité de mode singulière. Le travail a porté sur la traduction des références culturelles, des matières et des attitudes en un langage visuel qui équilibre l'ancrage et le mouvement, l'artisanat et le rythme de la vie urbaine.",
         "The creative direction brings these influences together in a contemporary visual universe. Through the project's existing imagery and identity work, the intention is to express BAALA's dual belonging with confidence: heritage remains present through its meaning and sensibility, rather than becoming folklore.": "La direction créative réunit ces influences dans un univers visuel contemporain. À travers l'imagerie et le travail d'identité existants, l'intention est d'exprimer avec assurance la double appartenance de BAALA : l'héritage reste présent par son sens et sa sensibilité, plutôt que de devenir folklore.",
         "POLLEN is a café concept built around a meeting of sensibilities: Danish-inspired minimalism and the warmth of local, organic materials. Wood and traditional embroidered tablecloths provide a tangible, familiar counterpoint to a clean and understated design language.": "POLLEN est un concept de café construit autour d'une rencontre de sensibilités : un minimalisme d'inspiration nordique et la chaleur de matières locales et organiques. Le bois et les nappes brodées traditionnelles apportent un contrepoint tangible et familier à un langage graphique sobre et épuré.",
@@ -404,22 +422,29 @@
       });
       // Navigation pilotée en JS : clic direct, header en priorité, sans saut
       function backToHeader() { window.scrollTo(0, 0); }
-      // Routes : #artists/neen -> vue #project-neen ; la rubrique parente reste active
-      function resolveRoute(hash) {
-        var raw = (hash || '#home').replace('#', '');
-        var m = /^(artists|brands)\/([a-z0-9-]+)$/.exec(raw);
-        if (m) { return { id: 'project-' + m[2], nav: '#' + m[1] }; }
-        raw = raw || 'home';
-        return { id: raw, nav: '#' + raw };
+      // Aperçu local (fichier ouvert directement) : l'URL ne bouge pas, la navigation reste en mémoire
+      var apercuLocal = (location.protocol === 'file:');
+      var cheminLocal = '/';
+      function cheminActuel() {
+        if (apercuLocal) { return cheminLocal; }
+        return location.pathname.replace(/\/index\.html?$/i, '/').replace(/\/404\.html?$/i, '/');
       }
-      function setActiveNav(navHash) {
+      // Routes : /artists/neen -> vue #project-neen ; la rubrique parente reste active
+      function resolveRoute(path) {
+        var raw = (path || '/').replace(/^\/+/, '').replace(/\/+$/, '').toLowerCase();
+        var m = /^(artists|brands)\/([a-z0-9-]+)$/.exec(raw);
+        if (m) { return { id: 'project-' + m[2], nav: '/' + m[1] }; }
+        if (!raw || raw === 'home') { return { id: 'home', nav: '/' }; }
+        return { id: raw, nav: '/' + raw };
+      }
+      function setActiveNav(navPath) {
         document.querySelectorAll('.topnav a').forEach(function (a) {
-          if (a.getAttribute('href') === navHash) { a.classList.add('is-active'); a.setAttribute('aria-current', 'page'); }
+          if (a.getAttribute('href') === navPath) { a.classList.add('is-active'); a.setAttribute('aria-current', 'page'); }
           else { a.classList.remove('is-active'); a.removeAttribute('aria-current'); }
         });
       }
-      function showView(hash) {
-        var route = resolveRoute(hash);
+      function showView(path) {
+        var route = resolveRoute(path);
         var id = route.id, found = false;
         document.querySelectorAll('.view').forEach(function (s) {
           var on = (s.id === id);
@@ -431,24 +456,28 @@
         document.title = (view && view.getAttribute('data-title')) || 'Chloé Bastianon, Portfolio';
         document.body.classList.toggle('on-home', id === 'home');
         backToHeader();
-        setActiveNav(found ? route.nav : '#home');
+        setActiveNav(found ? route.nav : '/');
       }
-      function goTo(hash) {
-        try { history.pushState(null, '', hash); }
-        catch (e) { try { window.location.hash = hash; } catch (_) {} }
-        showView(hash);
+      function goTo(path) {
+        if (apercuLocal) { cheminLocal = path; }
+        else { try { history.pushState(null, '', path); } catch (e) {} }
+        showView(path);
       }
-      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      document.querySelectorAll('a[href^="/"]').forEach(function (a) {
         a.addEventListener('click', function (e) {
-          var hash = a.getAttribute('href');
-          if (hash && hash.length > 1) { e.preventDefault(); goTo(hash); }
+          e.preventDefault();
+          goTo(a.getAttribute('href'));
         });
       });
-      window.addEventListener('popstate', function () { showView(window.location.hash); });
-      window.addEventListener('hashchange', function () { showView(window.location.hash); });
-      document.addEventListener('DOMContentLoaded', function () { showView(window.location.hash); });
+      // Anciens liens partagés avec dièse : /#artists/neen devient /artists/neen
+      if (!apercuLocal && location.hash.length > 1) {
+        var ancien = location.hash.replace('#', '').replace(/^\/+/, '');
+        goTo((!ancien || ancien === 'home') ? '/' : '/' + ancien);
+      }
+      window.addEventListener('popstate', function () { showView(cheminActuel()); });
+      document.addEventListener('DOMContentLoaded', function () { showView(cheminActuel()); });
       window.addEventListener('load', backToHeader);
-      showView(window.location.hash);
+      showView(cheminActuel());
     </script>
   </body>
 </html>
