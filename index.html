@@ -73,15 +73,17 @@
       .brand-baala { background: linear-gradient(#0e0f17 0 62%, transparent 62%), radial-gradient(circle at 27% 22%, #bdd7e5 0 6%, #bd8d53 6.2% 7.2%, transparent 7.4%), linear-gradient(90deg, #f5f5f3 0 25%, #876c4a 25% 50%, #b7aaa0 50% 75%, #e6d7ca 75%); }
       .brand-coeur { background: radial-gradient(circle at 54% 65%, #ff7172 0 9%, transparent 9.2%), radial-gradient(circle at 65% 65%, #ffc2c2 0 8%, transparent 8.2%), linear-gradient(0deg, transparent 0 20%, rgba(255,255,255,.5) 20% 22%, transparent 22%), #dedddb; }
       .pending::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 12px; font-family: Oswald, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
-      .contact-box { max-width: 920px; margin: 0 auto; padding: 10px 20px 60px; text-align: center; }
-      .contact-note { margin: 76px 0 0; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
-      .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: stretch; margin-top: 52px; }
+      .contact-box { max-width: 920px; margin: 0 auto; padding: 0 20px 60px; text-align: center; }
+      .contact-note { margin: 70px 0 0; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
+      .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; margin-top: 0; }
       .contact-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
       /* Boutons étoile (page Contact) */
-      .contact-star { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; }
-      .contact-star img { display: block; width: clamp(150px, 20vw, 290px); height: auto; transition: transform .18s ease; }
-      .contact-star span { font-family: Oswald, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+      .contact-star { position: relative; display: block; }
+      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; transition: transform .18s ease; }
+      .contact-star span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+      .contact-star.is-pink span { color: #000; }
+      .contact-star.is-black span { color: #ff6a94; }
       .contact-star:hover img { transform: scale(1.06); }
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
@@ -110,8 +112,8 @@
         .topnav { padding: 0; order: 2; font-size: 16px; justify-content: center; }
         .topbar-right { align-items: center; justify-content: center; width: 100%; gap: 14px; }
         .topbar-right .topnav { margin-right: 0; }
-        .contact-cols { grid-template-columns: 1fr; gap: 34px; margin-top: 40px; }
-        .contact-star img { width: 168px; }
+        .contact-cols { grid-template-columns: 1fr; gap: 34px; }
+        .contact-star img { width: 250px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -149,20 +151,20 @@
           <div class="contact-cols">
             <div class="contact-col">
               <p class="contact-col-title">Book a 30-minute call with me</p>
-              <a class="contact-star" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
+              <a class="contact-star is-pink" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
                 <img src="assets/star-pink.png" alt="" width="576" height="576">
                 <span>Calendar</span>
               </a>
             </div>
             <div class="contact-col">
               <p class="contact-col-title">Write to me directly</p>
-              <a class="contact-star" href="mailto:bastianon.chloe@gmail.com">
+              <a class="contact-star is-black" href="mailto:bastianon.chloe@gmail.com">
                 <img src="assets/star-black.png" alt="" width="576" height="576">
                 <span>Mail</span>
               </a>
             </div>
           </div>
-          <p class="contact-note">Let's talk identity.<br>For artists and brands who want to clarify their intentions and find their deep identity.</p>
+          <p class="contact-note">For artists and brands who want to clarify their intentions and find their deep identity.</p>
         </div>
       </section>
 
@@ -321,7 +323,6 @@
         "Book a 30-minute call with me": "Réservez un appel de 30 minutes avec moi",
         "Calendar": "Calendrier",
         "Write to me directly": "Écrivez-moi directement",
-        "Let's talk identity.": "Parlons identité.",
         "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
         "Project image pending": "Visuel à venir",
         "Neen, visual 1": "Neen, visuel 1",
@@ -396,16 +397,11 @@
         document.querySelectorAll('.lang button').forEach(function (b) {
           b.setAttribute('aria-pressed', b.getAttribute('data-lang') === next ? 'true' : 'false');
         });
-        try { localStorage.setItem('lang', next); } catch (e) {}
       }
+      // Le site s'ouvre toujours en anglais ; la bascule vaut pour la visite en cours
       document.querySelectorAll('.lang button').forEach(function (b) {
         b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
       });
-      (function () {
-        var saved = 'en';
-        try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
-        if (saved === 'fr') { applyLang('fr'); }
-      })();
       // Navigation pilotée en JS : clic direct, header en priorité, sans saut
       function backToHeader() { window.scrollTo(0, 0); }
       // Routes : #artists/neen -> vue #project-neen ; la rubrique parente reste active
