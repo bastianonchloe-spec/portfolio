@@ -444,8 +444,8 @@
       var cheminLocal = '/';
       // Aperçu local : un ancien lien en dièse (#artists) ouvre la bonne page, puis l'URL est nettoyée si le navigateur le permet
       if (apercuLocal && location.hash.length > 1) {
-        var ancienLocal = location.hash.replace(/^#\/?/, '');
-        if (document.getElementById(ancienLocal)) { cheminLocal = ancienLocal; }
+        var ancienLocal = location.hash.replace(/^#!?/, '').replace(/^\/+/, '');
+        if (/^(artists|brands)\/[a-z0-9-]+$/.test(ancienLocal) || document.getElementById(ancienLocal)) { cheminLocal = ancienLocal; }
         try { history.replaceState(null, '', location.pathname); } catch (e) {}
       }
       function cheminActuel() {
