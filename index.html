@@ -81,10 +81,7 @@
       a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
       /* Page projet */
       .project-page { padding-bottom: 56px; }
-      .pp-back, .pp-head, .pp-label, .pp-text { padding-left: var(--gutter); padding-right: var(--gutter); }
-      .pp-back { margin: 0 0 22px; }
-      .pp-back a { font-family: Oswald, Arial Narrow, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-      .pp-back a:hover { color: var(--ink); }
+      .pp-head, .pp-label, .pp-text { padding-left: var(--gutter); padding-right: var(--gutter); }
       .pp-name { margin: 0; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: 24px; font-weight: 400; line-height: 1; letter-spacing: .005em; text-transform: uppercase; }
       .pp-desc { margin: 10px 0 0; max-width: 720px; font-size: clamp(16px, 1.6vw, 18px); line-height: 1.4; letter-spacing: -.02em; color: var(--muted); }
       .pp-block { margin: 52px 0 0; }
@@ -93,11 +90,9 @@
       .pp-figure { margin: 26px 0 0; padding: 0 var(--gutter); }
       .pp-media { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
       .pp-media.wide { aspect-ratio: 21 / 9; }
-      .pp-outro { margin: 52px 0 0; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
         .pp-block { margin-top: 34px; }
-        .pp-outro { margin-top: 34px; }
         body.on-home { height: auto; overflow: visible; }
         body.on-home .site { height: auto; display: block; }
         body.on-home #home.is-open { display: block; }
@@ -167,7 +162,6 @@
 
       <section class="view" id="project-neen" data-title="Neen — Chloé Bastianon" aria-labelledby="pp-neen-title">
         <div class="project-page">
-          <p class="pp-back"><a href="#artists">← Artists</a></p>
           <header class="pp-head">
             <h1 class="pp-name" id="pp-neen-title">Neen</h1>
             <p class="pp-desc">Indie pop weaving human complexity with the organic world.</p>
@@ -187,13 +181,11 @@
             <p class="pp-text">The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support NEEN's identity across the project's existing imagery and applications.</p>
             <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-2.jpg" alt="Neen — l'artiste bras levés au bord de l'eau" loading="lazy"></div></figure>
           </section>
-          <p class="pp-back pp-outro"><a href="#artists">← Artists</a></p>
         </div>
       </section>
 
       <section class="view" id="project-eliott-ray" data-title="Eliott Ray — Chloé Bastianon" aria-labelledby="pp-eliott-title">
         <div class="project-page">
-          <p class="pp-back"><a href="#artists">← Artists</a></p>
           <header class="pp-head">
             <h1 class="pp-name" id="pp-eliott-title">Eliott Ray</h1>
             <p class="pp-desc">Intimate, electric and unapologetically sensitive alternative pop.</p>
@@ -213,13 +205,11 @@
             <p class="pp-text">The creative direction developed this tension into a distinctive visual territory, bringing together graphic experimentation, expressive imagery and live performance. The aim was to make the artist's singularity more legible while preserving the energy, vulnerability and unconventional spirit at the heart of the music.</p>
             <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray — silhouette en mouvement flou" loading="lazy"></div></figure>
           </section>
-          <p class="pp-back pp-outro"><a href="#artists">← Artists</a></p>
         </div>
       </section>
 
       <section class="view" id="project-suze" data-title="Suze — Chloé Bastianon" aria-labelledby="pp-suze-title">
         <div class="project-page">
-          <p class="pp-back"><a href="#artists">← Artists</a></p>
           <header class="pp-head">
             <h1 class="pp-name" id="pp-suze-title">Suze</h1>
             <p class="pp-desc">Ultrapop with a cosmovintage soul.</p>
@@ -239,13 +229,11 @@
             <p class="pp-text">The visual explorations aim to give this emerging universe greater coherence while keeping it open to evolution. Rather than presenting a finished identity, the work establishes creative directions and visual possibilities that can be developed as SUZE's artistic project takes shape.</p>
             <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/suze-2.jpg" alt="Suze — personnage en perruque bleue, vue de face" loading="lazy"></div></figure>
           </section>
-          <p class="pp-back pp-outro"><a href="#artists">← Artists</a></p>
         </div>
       </section>
 
       <section class="view" id="project-baala" data-title="Baala — Chloé Bastianon" aria-labelledby="pp-baala-title">
         <div class="project-page">
-          <p class="pp-back"><a href="#brands">← Brands</a></p>
           <header class="pp-head">
             <h1 class="pp-name" id="pp-baala-title">Baala</h1>
             <p class="pp-desc">Contemporary fashion rooted in Tunisian heritage and urban life.</p>
@@ -265,13 +253,11 @@
             <p class="pp-text">The creative direction brings these influences together in a contemporary visual universe. Through the project's existing imagery and identity work, the intention is to express BAALA's dual belonging with confidence: heritage remains present through its meaning and sensibility, rather than becoming folklore.</p>
             <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/baala-2.jpg" alt="Baala — portrait, blazer bleu clair et manteau de fourrure" loading="lazy"></div></figure>
           </section>
-          <p class="pp-back pp-outro"><a href="#brands">← Brands</a></p>
         </div>
       </section>
 
       <section class="view" id="project-pollen" data-title="Pollen — Chloé Bastianon" aria-labelledby="pp-pollen-title">
         <div class="project-page">
-          <p class="pp-back"><a href="#brands">← Brands</a></p>
           <header class="pp-head">
             <h1 class="pp-name" id="pp-pollen-title">Pollen</h1>
             <p class="pp-desc">Danish-inspired minimalism meets the warmth of local craft.</p>
@@ -291,7 +277,6 @@
             <p class="pp-text">The creative direction translates this concept into a coherent identity and design language, balancing minimalist forms with tactile materials and familiar references. Every application shown should reinforce the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.</p>
             <figure class="pp-figure"><div class="pp-media pending" data-label="Project image pending" role="img" aria-label="Pollen — visuel à venir"></div></figure>
           </section>
-          <p class="pp-back pp-outro"><a href="#brands">← Brands</a></p>
         </div>
       </section>
     </main>
