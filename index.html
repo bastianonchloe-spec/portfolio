@@ -73,8 +73,12 @@
       .contact-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
       .contact-divider { width: 1px; background: var(--line); }
-      .contact-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--ink); border-radius: 999px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
-      .contact-btn:hover { background: var(--ink); color: #fff; }
+      /* Boutons étoile (page Contact) */
+      .contact-star { display: inline-flex; flex-direction: column; align-items: center; gap: 12px; }
+      .contact-star img { display: block; width: clamp(130px, 14vw, 200px); height: auto; transition: transform .18s ease; }
+      .contact-star span { font-family: Oswald, sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+      .contact-star:hover img { transform: scale(1.06); }
+      .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
       .project-name a { display: inline-block; }
       .project-name a:hover { opacity: .5; }
@@ -103,6 +107,7 @@
         .topbar-right .topnav { margin-right: 0; }
         .contact-cols { grid-template-columns: 1fr; gap: 34px; margin-top: 40px; }
         .contact-divider { width: auto; height: 1px; }
+        .contact-star img { width: 132px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -141,12 +146,18 @@
           <div class="contact-cols">
             <div class="contact-col">
               <p class="contact-col-title">Book a 30-minute call with me</p>
-              <a class="contact-btn" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">Calendar</a>
+              <a class="contact-star" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
+                <img src="assets/star.png" alt="" width="479" height="458">
+                <span>Calendar</span>
+              </a>
             </div>
             <div class="contact-divider" aria-hidden="true"></div>
             <div class="contact-col">
               <p class="contact-col-title">Write to me directly</p>
-              <a class="contact-btn" href="mailto:bastianon.chloe@gmail.com">Mail</a>
+              <a class="contact-star" href="mailto:bastianon.chloe@gmail.com">
+                <img src="assets/star.png" alt="" width="479" height="458">
+                <span>Mail</span>
+              </a>
             </div>
           </div>
         </div>
