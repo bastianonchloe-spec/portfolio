@@ -441,7 +441,13 @@
         });
       });
       // Navigation pilotée en JS : clic direct, header en priorité, sans saut
-      function backToHeader() { window.scrollTo(0, 0); }
+      function backToHeader() {
+        window.scrollTo(0, 0);
+        if (document.documentElement) { document.documentElement.scrollTop = 0; }
+        if (document.body) { document.body.scrollTop = 0; }
+        if (window.requestAnimationFrame) { requestAnimationFrame(function () { window.scrollTo(0, 0); }); }
+        setTimeout(function () { window.scrollTo(0, 0); }, 80);
+      }
       // Aperçu local (fichier ouvert directement) : l'URL ne bouge pas, la navigation reste en mémoire
       var apercuLocal = (location.protocol === 'file:');
       var cheminLocal = '/';
@@ -503,6 +509,7 @@
       window.addEventListener('popstate', function () { showView(cheminActuel()); });
       document.addEventListener('DOMContentLoaded', function () { showView(cheminActuel()); });
       window.addEventListener('load', backToHeader);
+      window.addEventListener('pageshow', backToHeader);
       showView(cheminActuel());
     </script>
   </body>
