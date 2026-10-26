@@ -117,22 +117,14 @@
       .pp-video.is-playing .pp-video-poster, .pp-video.is-playing .pp-video-play { display: none; }
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
-      /* Encart Pinterest : le tableau ne s'affiche qu'au clic */
-      .pp-board { margin: 30px var(--gutter) 0; }
-      .pp-board-btn { display: block; width: 100%; margin: 0; padding: 44px 20px; border: 0; background: #111; color: #fff; text-align: center; cursor: pointer; transition: background .2s ease; }
-      .pp-board-btn:hover { background: #1b1b1b; }
-      .pp-board-kicker { display: block; font-family: Oswald, Arial Narrow, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #ff6a94; }
-      .pp-board-title { display: block; margin: 10px 0 0; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: clamp(20px, 2vw, 26px); font-weight: 400; line-height: 1; letter-spacing: .005em; text-transform: uppercase; }
-      .pp-board-hint { display: block; margin: 14px 0 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .6); }
-      .pp-board.is-open { padding: 14px; background: #111; }
-      .pp-board-widget { min-height: 260px; background: #fff; }
-      .pp-board-link { display: inline-block; margin: 14px 0 0; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: -.01em; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; transition: color .18s ease; }
-      .pp-board-link:hover { color: #ff6a94; }
       /* Fin de page artiste : écouter le projet et Instagram */
-      .pp-outro { display: flex; align-items: center; gap: clamp(20px, 3.4vw, 52px); margin: 72px 0 24px; padding: 0 var(--gutter); }
+      .pp-outro { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(20px, 3.4vw, 52px); margin: 72px 0 24px; padding: 0 var(--gutter); }
+      .pp-stars { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 30px); }
       .pp-outro .contact-star { flex: none; font-size: clamp(12px, 1.05vw, 15px); }
       .pp-outro .contact-star img { width: 19em; }
       .pp-outro .contact-star span { padding: 0 40.5%; font-size: 1em; line-height: 1.2; letter-spacing: .05em; text-align: center; }
+      .pp-outro .contact-star.is-mood span { padding: 0 33%; }
+      .pp-stars:has(.contact-star + .contact-star) .contact-star img { width: 17em; }
       .pp-follow { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
       .pp-follow a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; transition: color .18s ease, text-decoration-color .18s ease; }
       .pp-follow a:hover, .pp-follow a:focus-visible { color: #ff6a94; text-decoration-color: #ff6a94; }
@@ -151,11 +143,11 @@
         .topbar-right .topnav { order: 4; margin-right: 0; }
         .contact-cols { grid-template-columns: 1fr; gap: 34px; }
         .contact-star img { width: 250px; }
-        .pp-outro { flex-direction: column; align-items: center; gap: 22px; margin-top: 46px; text-align: center; }
-        .pp-board { margin-top: 24px; }
-        .pp-board-btn { padding: 34px 16px; }
-        .pp-outro .contact-star { font-size: 13px; }
+        .pp-outro { flex-direction: column; align-items: center; gap: 22px; margin-top: 46px; text-align: center; flex-wrap: wrap; }
+        .pp-stars { gap: 14px; }
+        .pp-outro .contact-star { font-size: 12px; }
         .pp-outro .contact-star img { width: 19em; }
+        .pp-stars:has(.contact-star + .contact-star) .contact-star img { width: 14.2em; }
         .pp-outro .contact-star span { font-size: 1em; }
         .pp-follow { font-size: 16px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
@@ -239,19 +231,17 @@
             <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
           </section>
           <div class="pp-outro">
-            <a class="contact-star is-black" href="https://neen.fm" target="_blank" rel="noopener">
-              <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Listen to the project</span>
-            </a>
+            <div class="pp-stars">
+              <a class="contact-star is-black" href="https://neen.fm" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>Listen to the project</span>
+              </a>
+              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/fashion-neen/" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>The moodboard</span>
+              </a>
+            </div>
             <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
-          </div>
-          <div class="pp-board" data-board="https://www.pinterest.com/chlobastianon/fashion-neen/">
-            <button class="pp-board-btn" type="button">
-              <span class="pp-board-kicker">Pinterest</span>
-              <span class="pp-board-title">Moodboard</span>
-              <span class="pp-board-hint">See the moodboard</span>
-            </button>
-            <a class="pp-board-link" href="https://www.pinterest.com/chlobastianon/fashion-neen/" target="_blank" rel="noopener" hidden>Open the moodboard on Pinterest<span aria-hidden="true"> ↗</span></a>
           </div>
         </div>
       </section>
@@ -303,19 +293,17 @@
             <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/suze-2.jpg" alt="SuZe, blue-wigged character, front view" loading="lazy"></div></figure>
           </section>
           <div class="pp-outro">
-            <a class="contact-star is-black" href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">
-              <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Listen to the project</span>
-            </a>
+            <div class="pp-stars">
+              <a class="contact-star is-black" href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>Listen to the project</span>
+              </a>
+              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/suze/" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>The moodboard</span>
+              </a>
+            </div>
             <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/suzanne__db/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
-          </div>
-          <div class="pp-board" data-board="https://www.pinterest.com/chlobastianon/suze/">
-            <button class="pp-board-btn" type="button">
-              <span class="pp-board-kicker">Pinterest</span>
-              <span class="pp-board-title">Moodboard</span>
-              <span class="pp-board-hint">See the moodboard</span>
-            </button>
-            <a class="pp-board-link" href="https://www.pinterest.com/chlobastianon/suze/" target="_blank" rel="noopener" hidden>Open the moodboard on Pinterest<span aria-hidden="true"> ↗</span></a>
           </div>
         </div>
       </section>
@@ -338,13 +326,13 @@
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
             <figure class="pp-figure"><div class="pp-media pending" data-label="Baala event images coming soon" role="img" aria-label="Baala event images coming soon"></div></figure>
           </section>
-          <div class="pp-board" data-board="https://www.pinterest.com/sarahbaala/campagne-fall-26-baala/">
-            <button class="pp-board-btn" type="button">
-              <span class="pp-board-kicker">Pinterest</span>
-              <span class="pp-board-title">Moodboard</span>
-              <span class="pp-board-hint">See the moodboard</span>
-            </button>
-            <a class="pp-board-link" href="https://www.pinterest.com/sarahbaala/campagne-fall-26-baala/" target="_blank" rel="noopener" hidden>Open the moodboard on Pinterest<span aria-hidden="true"> ↗</span></a>
+          <div class="pp-outro">
+            <div class="pp-stars">
+              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/sarahbaala/campagne-fall-26-baala/" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>The moodboard</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -367,13 +355,13 @@
             <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
             <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/pollen-2.jpg" alt="pollen, the room: pink curtain, bottles on the pedestal table and wooden tables" loading="lazy"></div></figure>
           </section>
-          <div class="pp-board" data-board="https://www.pinterest.com/chlobastianon/caf%C3%A9-pollen/">
-            <button class="pp-board-btn" type="button">
-              <span class="pp-board-kicker">Pinterest</span>
-              <span class="pp-board-title">Moodboard</span>
-              <span class="pp-board-hint">See the moodboard</span>
-            </button>
-            <a class="pp-board-link" href="https://www.pinterest.com/chlobastianon/caf%C3%A9-pollen/" target="_blank" rel="noopener" hidden>Open the moodboard on Pinterest<span aria-hidden="true"> ↗</span></a>
+          <div class="pp-outro">
+            <div class="pp-stars">
+              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/caf%C3%A9-pollen/" target="_blank" rel="noopener">
+                <img src="assets/star-black.png" alt="" width="576" height="576">
+                <span>The moodboard</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -408,8 +396,7 @@
         "Calendar": "Calendrier",
         "Listen to the project": "Écouter le projet",
         "Follow the project on": "Suivre le projet sur",
-        "See the moodboard": "Voir le moodboard",
-        "Open the moodboard on Pinterest": "Ouvrir le moodboard sur Pinterest",
+        "The moodboard": "Le moodboard",
         "Write to me directly": "Écrivez-moi directement",
         "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
         "Project image pending": "Visuel à venir",
@@ -492,37 +479,6 @@
           f.setAttribute('allowfullscreen', '');
           bloc.appendChild(f);
           bloc.classList.add('is-playing');
-        });
-      });
-      // Encart Pinterest : un clic charge le tableau, le script n'arrive qu'a ce moment-la
-      var pinterestCharge = false;
-      document.querySelectorAll('.pp-board').forEach(function (bloc) {
-        var bouton = bloc.querySelector('.pp-board-btn');
-        if (!bouton) { return; }
-        bouton.addEventListener('click', function () {
-          var url = bloc.getAttribute('data-board');
-          var largeur = Math.round(bloc.clientWidth) - 28;
-          if (largeur < 240) { largeur = 240; }
-          var ancre = document.createElement('a');
-          ancre.setAttribute('data-pin-do', 'embedBoard');
-          ancre.setAttribute('data-pin-board-width', String(largeur));
-          ancre.setAttribute('data-pin-scale-height', largeur < 520 ? '300' : '420');
-          ancre.setAttribute('data-pin-scale-width', largeur < 520 ? '92' : '118');
-          ancre.setAttribute('href', url);
-          var cadre = document.createElement('div');
-          cadre.className = 'pp-board-widget';
-          cadre.appendChild(ancre);
-          bouton.replaceWith(cadre);
-          var lien = bloc.querySelector('.pp-board-link');
-          if (lien) { lien.hidden = false; }
-          bloc.classList.add('is-open');
-          if (!pinterestCharge) {
-            pinterestCharge = true;
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://assets.pinterest.com/js/pinit.js';
-            document.head.appendChild(script);
-          }
         });
       });
       // Navigation pilotée en JS : clic direct, header en priorité, sans saut
