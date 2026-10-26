@@ -105,11 +105,11 @@
       .pp-cell.is-text:first-child { padding-right: clamp(24px, 4vw, 76px); }
       .pp-cell.is-text:last-child { padding-left: clamp(24px, 4vw, 76px); }
       .pp-copy { margin: 0; max-width: 34em; font-size: clamp(16px, 1.35vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
-      .pp-img { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 1 / 1; }
+      .pp-img { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
       .pp-caption { margin: 12px 0 0; }
       .pp-caption a { font-size: clamp(16px, 1.45vw, 18px); font-weight: 700; letter-spacing: -.02em; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: color .18s ease, text-decoration-color .18s ease; }
       .pp-caption a:hover, .pp-caption a:focus-visible { color: #ff6a94; text-decoration-color: #ff6a94; }
-      .pp-mood { color: #ff6a94; text-decoration: none; transition: color .18s ease, opacity .18s ease; }
+      .pp-mood { color: #ff6a94; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; transition: color .18s ease, opacity .18s ease; }
       .pp-mood:hover, .pp-mood:focus-visible { color: #e0457b; opacity: .88; }
       .pp-video-wrap { margin: 56px 0 0; padding: 0 var(--gutter); }
       .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; border-radius: clamp(10px, 1.1vw, 18px); }
@@ -123,14 +123,17 @@
       .pp-video.is-playing .pp-video-poster, .pp-video.is-playing .pp-video-play { display: none; }
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
-      .pp-foot { display: flex; align-items: center; gap: clamp(18px, 3vw, 46px); margin: 56px 0 0; padding: 0 var(--gutter); }
-      .pp-pin { position: relative; flex: none; width: clamp(126px, 13vw, 176px); }
-      .pp-pin img { display: block; width: 100%; height: auto; }
-      .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(12px, 1vw, 15px); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #ff6a94; }
-      .pp-foot-links { display: grid; gap: clamp(7px, .75vw, 12px); }
+      .pp-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 8px; margin: 56px 0 0; padding: 0 var(--gutter); }
+      .pp-pin { position: relative; display: block; width: min(100%, 560px); }
+      .pp-pin img { display: block; width: 100%; height: auto; transition: transform .18s ease; }
+      a.pp-pin:hover img { transform: scale(1.03); }
+      a.pp-pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 12px; }
+      .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 26%; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(20px, 3vw, 46px); font-weight: 600; line-height: 1; letter-spacing: .06em; text-transform: uppercase; text-align: center; color: #ff6a94; }
+      .pp-foot-links { display: grid; gap: clamp(8px, .9vw, 14px); min-width: 0; padding-left: clamp(24px, 4vw, 76px); }
       .pp-foot-links p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.35; letter-spacing: -.02em; }
       .pp-foot-links a { color: #ff6a94; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; transition: color .18s ease; }
       .pp-foot-links a:hover, .pp-foot-links a:focus-visible { color: #e0457b; }
+      .pp-foot-soon { color: #ff6a94; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; cursor: default; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
         body.on-home { height: auto; overflow: visible; }
@@ -150,8 +153,8 @@
         .pp-copy { max-width: none; }
         .pp-caption { margin-top: 9px; }
         .pp-video-wrap { margin-top: 34px; }
-        .pp-foot { flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 34px; }
-        .pp-foot-links { gap: 9px; }
+        .pp-foot { grid-template-columns: 1fr; gap: 18px; margin-top: 34px; }
+        .pp-foot-links { gap: 9px; padding-left: 0; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -238,13 +241,13 @@
             <div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div>
           </div>
           <div class="pp-foot">
-            <div class="pp-pin">
+            <a class="pp-pin" href="https://neen.fm" target="_blank" rel="noopener">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Project</span>
-            </div>
+              <span>Listen</span>
+            </a>
             <div class="pp-foot-links">
               <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
-              <p>Discover the <a href="https://neen.fm" target="_blank" rel="noopener">website</a></p>
+              <p>Download the <span class="pp-foot-soon">press kit</span></p>
             </div>
           </div>
         </div>
@@ -274,13 +277,13 @@
             <div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/p6-hxpffmqU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="Eliott Ray, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/p6-hxpffmqU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div>
           </div>
           <div class="pp-foot">
-            <div class="pp-pin">
+            <a class="pp-pin" href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Project</span>
-            </div>
+              <span>Listen</span>
+            </a>
             <div class="pp-foot-links">
               <p>Follow the project on <a href="https://www.instagram.com/eliott_ray/" target="_blank" rel="noopener">Instagram</a></p>
-              <p>Discover the <a href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">website</a></p>
+              <p>Download the <span class="pp-foot-soon">press kit</span></p>
             </div>
           </div>
         </div>
@@ -307,12 +310,13 @@
             </div>
           </div>
           <div class="pp-foot">
-            <div class="pp-pin">
+            <a class="pp-pin" href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Project</span>
-            </div>
+              <span>Listen</span>
+            </a>
             <div class="pp-foot-links">
               <p>Follow the project on <a href="https://www.instagram.com/suzanne__db/" target="_blank" rel="noopener">Instagram</a></p>
+              <p>Download the <span class="pp-foot-soon">press kit</span></p>
             </div>
           </div>
         </div>
@@ -338,13 +342,13 @@
             </div>
           </div>
           <div class="pp-foot">
-            <div class="pp-pin">
+            <a class="pp-pin" href="https://www.studiobaala.com" target="_blank" rel="noopener">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Project</span>
-            </div>
+              <span>Website</span>
+            </a>
             <div class="pp-foot-links">
               <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
-              <p>Discover the <a href="https://www.studiobaala.com" target="_blank" rel="noopener">website</a></p>
+              <p>Download the <span class="pp-foot-soon">press kit</span></p>
             </div>
           </div>
         </div>
@@ -372,10 +376,11 @@
           <div class="pp-foot">
             <div class="pp-pin">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Project</span>
+              <span>Website</span>
             </div>
             <div class="pp-foot-links">
               <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
+              <p>Download the <span class="pp-foot-soon">press kit</span></p>
             </div>
           </div>
         </div>
@@ -447,9 +452,9 @@
         "From there, a": "De là, un",
         "set the clarity of Danish design against the character of local, organic materials, using wood and embroidered tablecloths as tangible, familiar counterpoints to an understated language. The direction translates that balance into a coherent identity, one where every application reinforces the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.": "a confronté la clarté du design nordique au caractère des matières locales et organiques, en s'appuyant sur le bois et les nappes brodées comme contrepoints tangibles et familiers à un langage sobre. La direction traduit cet équilibre en une identité cohérente, où chaque application renforce la même idée : une expérience de café contemporaine ancrée dans la chaleur des matières, la simplicité et un sens du lieu.",
         "Listen": "Écouter",
-        "Project": "Projet",
-        "Discover the": "Découvrir le",
-        "website": "site",
+        "Website": "Site",
+        "Download the": "Télécharger le",
+        "press kit": "dossier de presse",
       };
       var I18N_REV = {};
       Object.keys(I18N).forEach(function (k) { I18N_REV[I18N[k]] = k; });
