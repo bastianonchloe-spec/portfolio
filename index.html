@@ -103,7 +103,6 @@
       .pp-cell { min-width: 0; }
       .pp-cell.is-img { margin: 0; }
       .pp-cell.is-text:first-child { padding-right: clamp(24px, 4vw, 76px); }
-      .pp-cell.is-text:last-child { padding-left: clamp(24px, 4vw, 76px); }
       .pp-copy { margin: 0; max-width: 34em; font-size: clamp(16px, 1.35vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
       .pp-img { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
       .pp-mood { color: #ff6a94; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; transition: color .18s ease, opacity .18s ease; }
@@ -126,7 +125,7 @@
       a.pp-pin:hover img { transform: scale(1.03); }
       a.pp-pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 12px; }
       .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 26%; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(16px, 2.1vw, 32px); font-weight: 600; line-height: 1; letter-spacing: .06em; text-transform: uppercase; text-align: center; color: #ff6a94; }
-      .pp-foot-links { display: grid; gap: clamp(8px, .9vw, 14px); min-width: 0; padding-left: clamp(24px, 4vw, 76px); }
+      .pp-foot-links { display: grid; gap: clamp(8px, .9vw, 14px); min-width: 0; }
       .pp-foot-links p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.35; letter-spacing: -.02em; }
       .pp-foot-links a { color: #ff6a94; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; transition: color .18s ease; }
       .pp-foot-links a:hover, .pp-foot-links a:focus-visible { color: #e0457b; }
@@ -146,7 +145,7 @@
         .contact-cols { grid-template-columns: 1fr; gap: 34px; }
         .contact-star img { width: 250px; }
         .pp-zig { grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-        .pp-cell.is-text:first-child, .pp-cell.is-text:last-child { padding: 0; }
+        .pp-cell.is-text:first-child { padding: 0; }
         .pp-copy { max-width: none; }
         .pp-video-wrap { margin-top: 34px; }
         .pp-foot { grid-template-columns: 1fr; gap: 18px; margin-top: 34px; }
