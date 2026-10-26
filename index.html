@@ -95,19 +95,25 @@
       .project-name { transition: opacity .18s ease; }
       .project-name:hover { opacity: .5; }
       a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-      /* Page projet */
+      /* Page projet : titre, zigzag 50/50, video pleine largeur, pied de page */
       .project-page { padding-bottom: 56px; }
-      .pp-head, .pp-label, .pp-text { padding-left: var(--gutter); padding-right: var(--gutter); }
+      .pp-head { padding-left: var(--gutter); padding-right: var(--gutter); }
       .pp-name { margin: 0; font-family: "Titan One", "Arial Black", Arial, sans-serif; font-size: 24px; font-weight: 400; line-height: 1; letter-spacing: .005em; text-transform: uppercase; }
-      .pp-summary { margin: 14px 0 0; max-width: min(100%, 1500px); font-size: clamp(16px, 1.5vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
-      .pp-block { margin: 52px 0 0; }
-      .pp-label { margin: 0 0 12px; max-width: min(100%, 1500px); font-family: Oswald, Arial Narrow, sans-serif; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
-      .pp-text { margin: 0; max-width: min(100%, 1500px); font-size: clamp(16px, 1.5vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
-      .pp-figure { margin: 26px 0 0; padding: 0 var(--gutter); }
-      .pp-media { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
-      .pp-media.wide { aspect-ratio: 21 / 9; }
-      .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; }
-      .pp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      .pp-zig { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 8px; margin: 26px 0 0; padding: 0 var(--gutter); }
+      .pp-cell { min-width: 0; }
+      .pp-cell.is-img { margin: 0; }
+      .pp-cell.is-text:first-child { padding-right: clamp(24px, 4vw, 76px); }
+      .pp-cell.is-text:last-child { padding-left: clamp(24px, 4vw, 76px); }
+      .pp-copy { margin: 0; max-width: 34em; font-size: clamp(16px, 1.35vw, 18px); line-height: 1.55; letter-spacing: -.01em; }
+      .pp-img { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 1 / 1; }
+      .pp-caption { margin: 12px 0 0; }
+      .pp-caption a { font-size: clamp(16px, 1.45vw, 18px); font-weight: 700; letter-spacing: -.02em; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; transition: color .18s ease, text-decoration-color .18s ease; }
+      .pp-caption a:hover, .pp-caption a:focus-visible { color: #ff6a94; text-decoration-color: #ff6a94; }
+      .pp-mood { color: #ff6a94; text-decoration: none; transition: color .18s ease, opacity .18s ease; }
+      .pp-mood:hover, .pp-mood:focus-visible { color: #e0457b; opacity: .88; }
+      .pp-video-wrap { margin: 56px 0 0; padding: 0 var(--gutter); }
+      .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; border-radius: clamp(10px, 1.1vw, 18px); }
+      .pp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: inherit; }
       .pp-video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(1.5) saturate(1.05) contrast(.97); transition: filter .25s ease, transform .3s ease; }
       .pp-video:hover .pp-video-poster { filter: brightness(1.62) saturate(1.05) contrast(.97); transform: scale(1.012); }
       .pp-video-play { position: absolute; inset: 0; display: grid; place-items: center; width: 100%; height: 100%; border: 0; background: none; cursor: pointer; }
@@ -117,20 +123,16 @@
       .pp-video.is-playing .pp-video-poster, .pp-video.is-playing .pp-video-play { display: none; }
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
-      /* Fin de page artiste : écouter le projet et Instagram */
-      .pp-outro { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(20px, 3.4vw, 52px); margin: 72px 0 24px; padding: 0 var(--gutter); }
-      .pp-stars { display: flex; align-items: center; gap: clamp(14px, 1.9vw, 30px); }
-      .pp-outro .contact-star { flex: none; font-size: clamp(12px, 1.05vw, 15px); }
-      .pp-outro .contact-star img { width: 19em; }
-      .pp-outro .contact-star span { padding: 0 40.5%; font-size: 1em; line-height: 1.2; letter-spacing: .05em; text-align: center; }
-      .pp-outro .contact-star.is-mood span { padding: 0 33%; }
-      .pp-stars:has(.contact-star + .contact-star) .contact-star img { width: 17em; }
-      .pp-follow { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
-      .pp-follow a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; transition: color .18s ease, text-decoration-color .18s ease; }
-      .pp-follow a:hover, .pp-follow a:focus-visible { color: #ff6a94; text-decoration-color: #ff6a94; }
+      .pp-foot { display: flex; align-items: center; gap: clamp(18px, 3vw, 46px); margin: 56px 0 0; padding: 0 var(--gutter); }
+      .pp-pin { position: relative; flex: none; width: clamp(126px, 13vw, 176px); }
+      .pp-pin img { display: block; width: 100%; height: auto; }
+      .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(12px, 1vw, 15px); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #ff6a94; }
+      .pp-foot-links { display: grid; gap: clamp(7px, .75vw, 12px); }
+      .pp-foot-links p { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.35; letter-spacing: -.02em; }
+      .pp-foot-links a { color: #ff6a94; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; transition: color .18s ease; }
+      .pp-foot-links a:hover, .pp-foot-links a:focus-visible { color: #e0457b; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
-        .pp-block { margin-top: 34px; }
         body.on-home { height: auto; overflow: visible; }
         body.on-home .site { height: auto; display: block; }
         body.on-home #home.is-open { display: block; }
@@ -143,13 +145,13 @@
         .topbar-right .topnav { order: 4; margin-right: 0; }
         .contact-cols { grid-template-columns: 1fr; gap: 34px; }
         .contact-star img { width: 250px; }
-        .pp-outro { flex-direction: column; align-items: center; gap: 22px; margin-top: 46px; text-align: center; flex-wrap: wrap; }
-        .pp-stars { gap: 14px; }
-        .pp-outro .contact-star { font-size: 12px; }
-        .pp-outro .contact-star img { width: 19em; }
-        .pp-stars:has(.contact-star + .contact-star) .contact-star img { width: 14.2em; }
-        .pp-outro .contact-star span { font-size: 1em; }
-        .pp-follow { font-size: 16px; }
+        .pp-zig { grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+        .pp-cell.is-text:first-child, .pp-cell.is-text:last-child { padding: 0; }
+        .pp-copy { max-width: none; }
+        .pp-caption { margin-top: 9px; }
+        .pp-video-wrap { margin-top: 34px; }
+        .pp-foot { flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 34px; }
+        .pp-foot-links { gap: 9px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -216,32 +218,34 @@
         <div class="project-page">
           <header class="pp-head">
             <h1 class="pp-name" id="pp-neen-title">Neen</h1>
-            <p class="pp-summary">An artist that blends indie pop with human complexity and the organic world. The project started from her songs and the natural metaphors that run through them, then moved into an exploration of the living world as a way of naming emotions that words alone cannot reach. From there, the ideation settled on organic textures, atmospheric references and a tender, contemplative tonality, brought together in a visual universe that echoes the music. The direction now supports neen's identity across the project's existing imagery and applications, and all of her music is gathered at neen.fm, a single link that redirects to every streaming platform.</p>
           </header>
-          <section class="pp-block">
-            <h2 class="pp-label">THE STARTING POINT</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-1.jpg" alt="neen, the artist crouching by the sea" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/neen-2.jpg" alt="neen, the artist with arms raised by the water" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
-          </section>
-          <div class="pp-outro">
-            <div class="pp-stars">
-              <a class="contact-star is-black" href="https://neen.fm" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>Listen to the project</span>
-              </a>
-              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/fashion-neen/" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>The moodboard</span>
-              </a>
+          <div class="pp-zig">
+            <div class="pp-cell is-text">
+              <p class="pp-copy">An artist that blends indie pop with human complexity and the organic world. The project started from her songs and the natural metaphors that run through them, then moved into an exploration of the living world as a way of naming emotions that words alone cannot reach.</p>
             </div>
-            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo raw" src="assets/neen-1.jpg" alt="neen, the artist crouching by the sea" loading="lazy"></div>
+            </figure>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo raw" src="assets/neen-2.jpg" alt="neen, the artist with arms raised by the water" loading="lazy"></div>
+              <figcaption class="pp-caption"><a href="https://neen.fm" target="_blank" rel="noopener">Listen</a></figcaption>
+            </figure>
+            <div class="pp-cell is-text">
+              <p class="pp-copy">From there, the ideation gathered into a <a class="pp-mood" href="https://www.pinterest.com/chlobastianon/fashion-neen/" target="_blank" rel="noopener">mood board</a> of organic textures, atmospheric references and a tender, contemplative tonality, brought together in a visual universe that echoes the music. The direction now supports neen's identity across the project's existing imagery and applications, and all of her music is gathered at neen.fm, a single link that redirects to every streaming platform.</p>
+            </div>
+          </div>
+          <div class="pp-video-wrap">
+            <div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div>
+          </div>
+          <div class="pp-foot">
+            <div class="pp-pin">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Project</span>
+            </div>
+            <div class="pp-foot-links">
+              <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
+              <p>Discover the <a href="https://neen.fm" target="_blank" rel="noopener">website</a></p>
+            </div>
           </div>
         </div>
       </section>
@@ -250,26 +254,34 @@
         <div class="project-page">
           <header class="pp-head">
             <h1 class="pp-name" id="pp-eliott-title">Eliott Ray</h1>
-            <p class="pp-summary">An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy. The exploration looked for a way to articulate that contradiction without smoothing it out, moving through graphic experimentation, expressive imagery and live performance. That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.</p>
           </header>
-          <section class="pp-block">
-            <h2 class="pp-label">THE STARTING POINT</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, frontal black-and-white portrait" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, blurred moving silhouette" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/p6-hxpffmqU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="Eliott Ray, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/p6-hxpffmqU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
-          </section>
-          <div class="pp-outro">
-            <a class="contact-star is-black" href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">
+          <div class="pp-zig">
+            <div class="pp-cell is-text">
+              <p class="pp-copy">An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy.</p>
+            </div>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, frontal black-and-white portrait" loading="lazy"></div>
+            </figure>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, blurred moving silhouette" loading="lazy"></div>
+              <figcaption class="pp-caption"><a href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">Listen</a></figcaption>
+            </figure>
+            <div class="pp-cell is-text">
+              <p class="pp-copy">The exploration looked for a way to articulate that contradiction without smoothing it out, moving through graphic experimentation, expressive imagery and live performance. That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.</p>
+            </div>
+          </div>
+          <div class="pp-video-wrap">
+            <div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/p6-hxpffmqU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="Eliott Ray, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/p6-hxpffmqU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div>
+          </div>
+          <div class="pp-foot">
+            <div class="pp-pin">
               <img src="assets/star-black.png" alt="" width="576" height="576">
-              <span>Listen to the project</span>
-            </a>
-            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/eliott_ray/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+              <span>Project</span>
+            </div>
+            <div class="pp-foot-links">
+              <p>Follow the project on <a href="https://www.instagram.com/eliott_ray/" target="_blank" rel="noopener">Instagram</a></p>
+              <p>Discover the <a href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">website</a></p>
+            </div>
           </div>
         </div>
       </section>
@@ -278,32 +290,30 @@
         <div class="project-page">
           <header class="pp-head">
             <h1 class="pp-name" id="pp-suze-title">Suze</h1>
-            <p class="pp-summary">An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop. Because the project is still taking shape, the ideation was built as an open system rather than a fixed identity: pop immediacy next to otherworldly references, familiar imagery next to eccentric details, playful energy next to cosmic nostalgia. The work mapped these recurring contrasts, tested visual directions and kept the strongest ones as possibilities rather than rules. What the direction establishes today is a coherent creative frame, one that can absorb new images, collaborations and formats as SuZe's universe evolves.</p>
           </header>
-          <section class="pp-block">
-            <h2 class="pp-label">THE STARTING POINT</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/suze-1.jpg" alt="SuZe, blue-wigged character lying on a fur throw" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
-            <figure class="pp-figure"><div class="pp-media wide pending" data-label="Project image pending" role="img" aria-label="SuZe, exploration visual pending"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/suze-2.jpg" alt="SuZe, blue-wigged character, front view" loading="lazy"></div></figure>
-          </section>
-          <div class="pp-outro">
-            <div class="pp-stars">
-              <a class="contact-star is-black" href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>Listen to the project</span>
-              </a>
-              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/suze/" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>The moodboard</span>
-              </a>
+          <div class="pp-zig">
+            <div class="pp-cell is-text">
+              <p class="pp-copy">An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop. Because the project is still taking shape, the ideation was built as an open system rather than a fixed identity: pop immediacy next to otherworldly references, familiar imagery next to eccentric details, playful energy next to cosmic nostalgia.</p>
             </div>
-            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/suzanne__db/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo raw" src="assets/suze-1.jpg" alt="SuZe, blue-wigged character lying on a fur throw" loading="lazy"></div>
+            </figure>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo raw" src="assets/suze-2.jpg" alt="SuZe, blue-wigged character, front view" loading="lazy"></div>
+              <figcaption class="pp-caption"><a href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">Listen</a></figcaption>
+            </figure>
+            <div class="pp-cell is-text">
+              <p class="pp-copy">The work mapped these recurring contrasts in a <a class="pp-mood" href="https://www.pinterest.com/chlobastianon/suze/" target="_blank" rel="noopener">mood board</a>, tested visual directions and kept the strongest ones as possibilities rather than rules. What the direction establishes today is a coherent creative frame, one that can absorb new images, collaborations and formats as SuZe's universe evolves.</p>
+            </div>
+          </div>
+          <div class="pp-foot">
+            <div class="pp-pin">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Project</span>
+            </div>
+            <div class="pp-foot-links">
+              <p>Follow the project on <a href="https://www.instagram.com/suzanne__db/" target="_blank" rel="noopener">Instagram</a></p>
+            </div>
           </div>
         </div>
       </section>
@@ -312,26 +322,29 @@
         <div class="project-page">
           <header class="pp-head">
             <h1 class="pp-name" id="pp-baala-title">Baala</h1>
-            <p class="pp-summary">A fashion brand rooted in Tunisian heritage and the urban life of Paris and London. The ideation began with the question of how to hold two cultural realities together without turning heritage into a decorative motif. The exploration translated Tunisian references, materials and attitudes into a contemporary visual language, balancing rootedness with movement and craftsmanship with the pace of city life. The resulting direction expresses that dual belonging with confidence, through the brand's imagery and identity work. The collaboration also covered the brand's photoshoots, the design of its newsletter and the organisation of its Fashion Week event, and Baala's universe can be discovered at <a class="pp-link" href="https://www.studiobaala.com" target="_blank" rel="noopener">studiobaala.com</a>.</p>
           </header>
-          <section class="pp-block">
-            <h2 class="pp-label">THE STARTING POINT</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/baala-1.jpg" alt="Baala, figure lying on a concrete ledge, leather bag in hand" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/baala-2.jpg" alt="Baala, portrait, pale blue blazer and fur coat" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <figure class="pp-figure"><div class="pp-media pending" data-label="Baala event images coming soon" role="img" aria-label="Baala event images coming soon"></div></figure>
-          </section>
-          <div class="pp-outro">
-            <div class="pp-stars">
-              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/sarahbaala/campagne-fall-26-baala/" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>The moodboard</span>
-              </a>
+          <div class="pp-zig">
+            <div class="pp-cell is-text">
+              <p class="pp-copy">A fashion brand rooted in Tunisian heritage and the urban life of Paris and London. The ideation began with the question of how to hold two cultural realities together without turning heritage into a decorative motif.</p>
+            </div>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/baala-1.jpg" alt="Baala, figure lying on a concrete ledge, leather bag in hand" loading="lazy"></div>
+            </figure>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/baala-2.jpg" alt="Baala, portrait, pale blue blazer and fur coat" loading="lazy"></div>
+            </figure>
+            <div class="pp-cell is-text">
+              <p class="pp-copy">The exploration gathered Tunisian references, materials and attitudes in a <a class="pp-mood" href="https://www.pinterest.com/sarahbaala/campagne-fall-26-baala/" target="_blank" rel="noopener">mood board</a>, then translated them into a contemporary visual language that balances rootedness with movement and craftsmanship with the pace of city life. The resulting direction expresses that dual belonging with confidence, through the brand's imagery and identity work. The collaboration also covered the brand's photoshoots, the design of its newsletter and the organisation of its Fashion Week event, and Baala's universe can be discovered at <a class="pp-link" href="https://www.studiobaala.com" target="_blank" rel="noopener">studiobaala.com</a>.</p>
+            </div>
+          </div>
+          <div class="pp-foot">
+            <div class="pp-pin">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Project</span>
+            </div>
+            <div class="pp-foot-links">
+              <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
+              <p>Discover the <a href="https://www.studiobaala.com" target="_blank" rel="noopener">website</a></p>
             </div>
           </div>
         </div>
@@ -341,26 +354,28 @@
         <div class="project-page">
           <header class="pp-head">
             <h1 class="pp-name" id="pp-pollen-title">Pollen</h1>
-            <p class="pp-summary">A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths. The ideation started from a single contrast: restraint and warmth. From there, the work explored how the clarity of Danish design could meet the character of local, organic materials without losing either quality, using wood and embroidered tablecloths as tangible, familiar counterpoints to an understated language. The direction translates that balance into a coherent identity, one where every application reinforces the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.</p>
           </header>
-          <section class="pp-block">
-            <h2 class="pp-label">THE STARTING POINT</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/pollen-1.jpg" alt="pollen, concrete walls, warm lamp and wooden counter with the embroidered door panel" loading="lazy"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EXPLORING THE EXISTING UNIVERSE AND INTENTIONS</h2>
-            <figure class="pp-figure"><div class="pp-media wide pending" data-label="Project image pending" role="img" aria-label="pollen, visual pending"></div></figure>
-          </section>
-          <section class="pp-block">
-            <h2 class="pp-label">EMBODYING AND AFFIRMING THE UNIVERSE</h2>
-            <figure class="pp-figure"><div class="pp-media"><img class="photo" src="assets/pollen-2.jpg" alt="pollen, the room: pink curtain, bottles on the pedestal table and wooden tables" loading="lazy"></div></figure>
-          </section>
-          <div class="pp-outro">
-            <div class="pp-stars">
-              <a class="contact-star is-black is-mood" href="https://www.pinterest.com/chlobastianon/caf%C3%A9-pollen/" target="_blank" rel="noopener">
-                <img src="assets/star-black.png" alt="" width="576" height="576">
-                <span>The moodboard</span>
-              </a>
+          <div class="pp-zig">
+            <div class="pp-cell is-text">
+              <p class="pp-copy">A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths. The ideation started from a single contrast: restraint and warmth.</p>
+            </div>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/pollen-1.jpg" alt="pollen, concrete walls, warm lamp and wooden counter with the embroidered door panel" loading="lazy"></div>
+            </figure>
+            <figure class="pp-cell is-img">
+              <div class="pp-img"><img class="photo" src="assets/pollen-2.jpg" alt="pollen, the room: pink curtain, bottles on the pedestal table and wooden tables" loading="lazy"></div>
+            </figure>
+            <div class="pp-cell is-text">
+              <p class="pp-copy">From there, a <a class="pp-mood" href="https://www.pinterest.com/chlobastianon/caf%C3%A9-pollen/" target="_blank" rel="noopener">mood board</a> set the clarity of Danish design against the character of local, organic materials, using wood and embroidered tablecloths as tangible, familiar counterpoints to an understated language. The direction translates that balance into a coherent identity, one where every application reinforces the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.</p>
+            </div>
+          </div>
+          <div class="pp-foot">
+            <div class="pp-pin">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Project</span>
+            </div>
+            <div class="pp-foot-links">
+              <p>Follow the project on <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram</a></p>
             </div>
           </div>
         </div>
@@ -380,26 +395,15 @@
         "Chloé Bastianon, portfolio": "Portfolio de Chloé Bastianon",
         "Chloé Bastianon, portfolio: identity strategy & creative direction.": "Portfolio de Chloé Bastianon : stratégie d'identité et direction créative.",
         "An artist that blends indie pop with human complexity and the organic world.": "Un artiste qui tisse une pop indé entre complexité humaine et monde organique.",
-        "An artist that blends indie pop with human complexity and the organic world. The project started from her songs and the natural metaphors that run through them, then moved into an exploration of the living world as a way of naming emotions that words alone cannot reach. From there, the ideation settled on organic textures, atmospheric references and a tender, contemplative tonality, brought together in a visual universe that echoes the music. The direction now supports neen's identity across the project's existing imagery and applications, and all of her music is gathered at neen.fm, a single link that redirects to every streaming platform.": "Un artiste qui tisse une pop indé entre complexité humaine et monde organique. Le projet est parti de ses morceaux et des métaphores naturelles qui les traversent, puis d'une exploration du monde vivant comme moyen de nommer des émotions que les mots seuls ne saisissent pas. L'idéation s'est ensuite resserrée autour de textures organiques, de références atmosphériques et d'une tonalité tendre et contemplative, réunies dans un univers visuel qui fait écho à la musique. Cette direction accompagne aujourd'hui l'identité de neen sur l'imagerie et les applications existantes du projet, et toute sa musique est rassemblée sur neen.fm, un lien unique qui redirige vers toutes les plateformes d'écoute.",
         "An artist that makes intimate, electric and unapologetically sensitive alternative pop.": "Un artiste qui signe une pop alternative intime, électrique et sensible sans excuses.",
-        "An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy. The exploration looked for a way to articulate that contradiction without smoothing it out, moving through graphic experimentation, expressive imagery and live performance. That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.": "Un artiste qui signe une pop alternative intime, électrique et sensible sans excuses. L'idéation est partie de la tension au cœur de sa musique : des émotions intimes portées par une énergie électrique et frontale. L'exploration a cherché comment faire coexister sensibilité et intensité sans lisser ni l'une ni l'autre, à travers l'expérimentation graphique, l'imagerie expressive et la scène. Ce parcours a produit un territoire visuel singulier qui conserve la rugosité des morceaux tout en rendant la singularité de l'artiste plus lisible. La direction sert aujourd'hui l'énergie, la vulnérabilité et l'esprit non conventionnel qui définissent le projet.",
         "An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop.": "Un artiste qui enveloppe une étrangeté blonde et une âme cosmovintage dans de l'ultrapop.",
-        "An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop. Because the project is still taking shape, the ideation was built as an open system rather than a fixed identity: pop immediacy next to otherworldly references, familiar imagery next to eccentric details, playful energy next to cosmic nostalgia. The work mapped these recurring contrasts, tested visual directions and kept the strongest ones as possibilities rather than rules. What the direction establishes today is a coherent creative frame, one that can absorb new images, collaborations and formats as SuZe's universe evolves.": "Un artiste qui enveloppe une étrangeté blonde et une âme cosmovintage dans de l'ultrapop. Le projet étant encore en construction, l'idéation a été pensée comme un système ouvert plutôt que comme une identité figée : l'immédiateté pop à côté des références venues d'ailleurs, l'imagerie familière à côté des détails excentriques, l'énergie ludique à côté de la nostalgie cosmique. Le travail a cartographié ces contrastes récurrents, testé des directions visuelles et retenu les plus fortes comme des possibilités plutôt que comme des règles. Ce que la direction établit aujourd'hui, c'est un cadre créatif cohérent, capable d'accueillir de nouvelles images, collaborations et formats à mesure que l'univers de SuZe se dessine.",
         "A fashion brand rooted in Tunisian heritage and the urban life of Paris and London.": "Une marque de mode ancrée dans l'héritage tunisien et la vie urbaine de Paris et de Londres.",
-        "A fashion brand rooted in Tunisian heritage and the urban life of Paris and London. The ideation began with the question of how to hold two cultural realities together without turning heritage into a decorative motif. The exploration translated Tunisian references, materials and attitudes into a contemporary visual language, balancing rootedness with movement and craftsmanship with the pace of city life. The resulting direction expresses that dual belonging with confidence, through the brand's imagery and identity work. The collaboration also covered the brand's photoshoots, the design of its newsletter and the organisation of its Fashion Week event, and Baala's universe can be discovered at": "Une marque de mode ancrée dans l'héritage tunisien et la vie urbaine de Paris et de Londres. L'idéation est née d'une question : comment tenir ensemble deux réalités culturelles sans réduire l'héritage à un motif décoratif. L'exploration a traduit les références, les matières et les attitudes tunisiennes en un langage visuel contemporain, en équilibre entre enracinement et mouvement, entre artisanat et rythme de la vie urbaine. La direction qui en résulte affirme cette double appartenance avec assurance, à travers l'imagerie et le travail d'identité de la marque. La collaboration a aussi couvert les shootings, la conception de la newsletter et l'organisation de l'événement Fashion Week ; l'univers de Baala se découvre sur",
         "A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths.": "Un café à Londres qui mêle minimalisme nordique, matières locales et organiques, bois et nappes brodées traditionnelles.",
-        "A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths. The ideation started from a single contrast: restraint and warmth. From there, the work explored how the clarity of Danish design could meet the character of local, organic materials without losing either quality, using wood and embroidered tablecloths as tangible, familiar counterpoints to an understated language. The direction translates that balance into a coherent identity, one where every application reinforces the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.": "Un café à Londres qui mêle minimalisme nordique, matières locales et organiques, bois et nappes brodées traditionnelles. L'idéation est partie d'un seul contraste : la retenue et la chaleur. Le travail a exploré comment la clarté du design nordique pouvait rencontrer le caractère des matières locales et organiques sans rien perdre de l'une ni de l'autre, en s'appuyant sur le bois et les nappes brodées comme contrepoints tangibles et familiers à un langage sobre. La direction traduit cet équilibre en une identité cohérente, où chaque application renforce la même idée : une expérience de café contemporaine ancrée dans la chaleur des matières, la simplicité et un sens du lieu.",
-        "THE STARTING POINT": "LE PROJET AU DÉPART",
-        "EXPLORING THE EXISTING UNIVERSE AND INTENTIONS": "EXPLORATION DE L'UNIVERS EXISTANT ET DES INTENTIONS",
-        "EMBODYING AND AFFIRMING THE UNIVERSE": "INCARNATION ET AFFIRMATION DE L'UNIVERS",
         "Book a 30-minute call with me": "Réservez un appel de 30 minutes avec moi",
         "Calendar": "Calendrier",
-        "Listen to the project": "Écouter le projet",
         "Follow the project on": "Suivre le projet sur",
-        "The moodboard": "Le moodboard",
         "Write to me directly": "Écrivez-moi directement",
         "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
-        "Project image pending": "Visuel à venir",
         "neen, visual 1": "neen, visuel 1",
         "neen, visual 2": "neen, visuel 2",
         "Eliott Ray, visual 1": "Eliott Ray, visuel 1",
@@ -420,9 +424,6 @@
         "pollen, room with the pink curtain, bottles and wooden tables": "pollen, la salle, rideau rose, bouteilles et tables en bois",
         "pollen, concrete walls, warm lamp and wooden counter with the embroidered door panel": "pollen, murs de béton, lampe chaude et comptoir en bois avec la porte brodée",
         "pollen, the room: pink curtain, bottles on the pedestal table and wooden tables": "pollen, la salle : rideau rose, bouteilles sur la table haute et tables en bois",
-        "SuZe, exploration visual pending": "SuZe, visuel d'exploration à venir",
-        "Baala event images coming soon": "Images de l'évènement Baala à venir",
-        "pollen, visual pending": "pollen, visuel à venir",
         "View the neen project": "Voir le projet neen",
         "neen, music video": "neen, clip",
         "Eliott Ray, music video": "Eliott Ray, clip",
@@ -431,6 +432,24 @@
         "View the SuZe project": "Voir le projet SuZe",
         "View the Baala project": "Voir le projet Baala",
         "View the pollen project": "Voir le projet pollen",
+        "An artist that blends indie pop with human complexity and the organic world. The project started from her songs and the natural metaphors that run through them, then moved into an exploration of the living world as a way of naming emotions that words alone cannot reach.": "Un artiste qui tisse une pop indé entre complexité humaine et monde organique. Le projet est parti de ses morceaux et des métaphores naturelles qui les traversent, puis d'une exploration du monde vivant comme moyen de nommer des émotions que les mots seuls ne saisissent pas.",
+        "From there, the ideation gathered into a": "L'idéation s'est ensuite rassemblée dans un",
+        "of organic textures, atmospheric references and a tender, contemplative tonality, brought together in a visual universe that echoes the music. The direction now supports neen's identity across the project's existing imagery and applications, and all of her music is gathered at neen.fm, a single link that redirects to every streaming platform.": "de textures organiques, de références atmosphériques et d'une tonalité tendre et contemplative, réunies dans un univers visuel qui fait écho à la musique. Cette direction accompagne aujourd'hui l'identité de neen sur l'imagerie et les applications existantes du projet, et toute sa musique est rassemblée sur neen.fm, un lien unique qui redirige vers toutes les plateformes d'écoute.",
+        "An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy.": "Un artiste qui signe une pop alternative intime, électrique et sensible sans excuses. L'idéation est partie de la tension au cœur de sa musique : des émotions intimes portées par une énergie électrique et frontale.",
+        "The exploration looked for a way to articulate that contradiction without smoothing it out, moving through graphic experimentation, expressive imagery and live performance. That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.": "L'exploration a cherché comment faire coexister sensibilité et intensité sans lisser ni l'une ni l'autre, à travers l'expérimentation graphique, l'imagerie expressive et la scène. Ce parcours a produit un territoire visuel singulier qui conserve la rugosité des morceaux tout en rendant la singularité de l'artiste plus lisible. La direction sert aujourd'hui l'énergie, la vulnérabilité et l'esprit non conventionnel qui définissent le projet.",
+        "An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop. Because the project is still taking shape, the ideation was built as an open system rather than a fixed identity: pop immediacy next to otherworldly references, familiar imagery next to eccentric details, playful energy next to cosmic nostalgia.": "Un artiste qui enveloppe une étrangeté blonde et une âme cosmovintage dans de l'ultrapop. Le projet étant encore en construction, l'idéation a été pensée comme un système ouvert plutôt que comme une identité figée : l'immédiateté pop à côté des références venues d'ailleurs, l'imagerie familière à côté des détails excentriques, l'énergie ludique à côté de la nostalgie cosmique.",
+        "The work mapped these recurring contrasts in a": "Le travail a cartographié ces contrastes récurrents dans un",
+        ", tested visual directions and kept the strongest ones as possibilities rather than rules. What the direction establishes today is a coherent creative frame, one that can absorb new images, collaborations and formats as SuZe's universe evolves.": ", testé des directions visuelles et retenu les plus fortes comme des possibilités plutôt que comme des règles. Ce que la direction établit aujourd'hui, c'est un cadre créatif cohérent, capable d'accueillir de nouvelles images, collaborations et formats à mesure que l'univers de SuZe se dessine.",
+        "A fashion brand rooted in Tunisian heritage and the urban life of Paris and London. The ideation began with the question of how to hold two cultural realities together without turning heritage into a decorative motif.": "Une marque de mode ancrée dans l'héritage tunisien et la vie urbaine de Paris et de Londres. L'idéation est née d'une question : comment tenir ensemble deux réalités culturelles sans réduire l'héritage à un motif décoratif.",
+        "The exploration gathered Tunisian references, materials and attitudes in a": "L'exploration a rassemblé les références, les matières et les attitudes tunisiennes dans un",
+        ", then translated them into a contemporary visual language that balances rootedness with movement and craftsmanship with the pace of city life. The resulting direction expresses that dual belonging with confidence, through the brand's imagery and identity work. The collaboration also covered the brand's photoshoots, the design of its newsletter and the organisation of its Fashion Week event, and Baala's universe can be discovered at": ", puis les a traduites en un langage visuel contemporain, en équilibre entre enracinement et mouvement, entre artisanat et rythme de la vie urbaine. La direction qui en résulte affirme cette double appartenance avec assurance, à travers l'imagerie et le travail d'identité de la marque. La collaboration a aussi couvert les shootings, la conception de la newsletter et l'organisation de l'événement Fashion Week ; l'univers de Baala se découvre sur",
+        "A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths. The ideation started from a single contrast: restraint and warmth.": "Un café à Londres qui mêle minimalisme nordique, matières locales et organiques, bois et nappes brodées traditionnelles. L'idéation est partie d'un seul contraste : la retenue et la chaleur.",
+        "From there, a": "De là, un",
+        "set the clarity of Danish design against the character of local, organic materials, using wood and embroidered tablecloths as tangible, familiar counterpoints to an understated language. The direction translates that balance into a coherent identity, one where every application reinforces the same idea: a contemporary café experience grounded in material warmth, simplicity and a sense of place.": "a confronté la clarté du design nordique au caractère des matières locales et organiques, en s'appuyant sur le bois et les nappes brodées comme contrepoints tangibles et familiers à un langage sobre. La direction traduit cet équilibre en une identité cohérente, où chaque application renforce la même idée : une expérience de café contemporaine ancrée dans la chaleur des matières, la simplicité et un sens du lieu.",
+        "Listen": "Écouter",
+        "Project": "Projet",
+        "Discover the": "Découvrir le",
+        "website": "site",
       };
       var I18N_REV = {};
       Object.keys(I18N).forEach(function (k) { I18N_REV[I18N[k]] = k; });
