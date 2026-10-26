@@ -117,6 +117,14 @@
       .pp-video.is-playing .pp-video-poster, .pp-video.is-playing .pp-video-play { display: none; }
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
+      /* Fin de page artiste : écouter le projet et Instagram */
+      .pp-outro { display: flex; align-items: center; gap: clamp(20px, 3.4vw, 52px); margin: 72px 0 24px; padding: 0 var(--gutter); }
+      .pp-outro .contact-star { flex: none; }
+      .pp-outro .contact-star img { width: clamp(200px, 17vw, 290px); }
+      .pp-outro .contact-star span { padding: 0 16%; font-size: clamp(12px, 1.05vw, 15px); line-height: 1.2; letter-spacing: .05em; text-align: center; }
+      .pp-follow { margin: 0; font-size: clamp(16px, 1.5vw, 18px); font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
+      .pp-follow a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 7px; transition: color .18s ease, text-decoration-color .18s ease; }
+      .pp-follow a:hover, .pp-follow a:focus-visible { color: #ff6a94; text-decoration-color: #ff6a94; }
       @media (max-width: 760px) {
         :root { --gutter: 16px; }
         .pp-block { margin-top: 34px; }
@@ -132,6 +140,10 @@
         .topbar-right .topnav { order: 4; margin-right: 0; }
         .contact-cols { grid-template-columns: 1fr; gap: 34px; }
         .contact-star img { width: 250px; }
+        .pp-outro { flex-direction: column; align-items: center; gap: 22px; margin-top: 46px; text-align: center; }
+        .pp-outro .contact-star img { width: 226px; }
+        .pp-outro .contact-star span { font-size: 13px; }
+        .pp-follow { font-size: 16px; }
         .logo-name { font-size: clamp(40px, 12vw, 58px); }
         .logo-role { text-align: center; }
         .mosaic { margin-top: 14px; min-height: 0; padding-left: var(--gutter); padding-right: var(--gutter); gap: 12px; }
@@ -215,6 +227,13 @@
             <p class="pp-text">The creative direction sought to bring this sensibility into a coherent artistic universe, connecting the music with its visual expression. The resulting direction draws on organic references, atmosphere and emotion to support neen's identity across the project's existing imagery and applications. All her music is gathered at <a class="pp-link" href="https://neen.fm" target="_blank" rel="noopener">neen.fm</a>, a single link that redirects to every streaming platform.</p>
             <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/-gjMbGog5sU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="neen, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/-gjMbGog5sU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
           </section>
+          <div class="pp-outro">
+            <a class="contact-star is-black" href="https://neen.fm" target="_blank" rel="noopener">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Listen to the project</span>
+            </a>
+            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/chloe_bastianon/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+          </div>
         </div>
       </section>
 
@@ -239,6 +258,13 @@
             <p class="pp-text">The creative direction developed this tension into a distinctive visual territory, bringing together graphic experimentation, expressive imagery and live performance. The aim was to make the artist's singularity more legible while preserving the energy, vulnerability and unconventional spirit at the heart of the music.</p>
             <figure class="pp-figure"><div class="pp-video" data-embed="https://www.youtube-nocookie.com/embed/p6-hxpffmqU?autoplay=1&amp;rel=0&amp;playsinline=1" data-title="Eliott Ray, music video"><img class="pp-video-poster" src="https://i.ytimg.com/vi/p6-hxpffmqU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy"><button class="pp-video-play" type="button" aria-label="Play the video"><span class="pp-video-tri" aria-hidden="true"></span></button></div></figure>
           </section>
+          <div class="pp-outro">
+            <a class="contact-star is-black" href="https://linktr.ee/eliottrayproduction" target="_blank" rel="noopener">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Listen to the project</span>
+            </a>
+            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/eliott_ray/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+          </div>
         </div>
       </section>
 
@@ -263,6 +289,13 @@
             <p class="pp-text">The visual explorations aim to give this emerging universe greater coherence while keeping it open to evolution. Rather than presenting a finished identity, the work establishes creative directions and visual possibilities that can be developed as SuZe's artistic project takes shape.</p>
             <figure class="pp-figure"><div class="pp-media"><img class="photo raw" src="assets/suze-2.jpg" alt="SuZe, blue-wigged character, front view" loading="lazy"></div></figure>
           </section>
+          <div class="pp-outro">
+            <a class="contact-star is-black" href="https://distrokid.com/hyperfollow/suze/courbatures-2" target="_blank" rel="noopener">
+              <img src="assets/star-black.png" alt="" width="576" height="576">
+              <span>Listen to the project</span>
+            </a>
+            <p class="pp-follow"><span>Follow the project on</span> <a href="https://www.instagram.com/suzanne__db/" target="_blank" rel="noopener">Instagram<span aria-hidden="true"> ↗</span></a></p>
+          </div>
         </div>
       </section>
 
@@ -337,6 +370,8 @@
         "EMBODYING AND AFFIRMING THE UNIVERSE": "INCARNATION ET AFFIRMATION DE L'UNIVERS",
         "Book a 30-minute call with me": "Réservez un appel de 30 minutes avec moi",
         "Calendar": "Calendrier",
+        "Listen to the project": "Écouter le projet",
+        "Follow the project on": "Suivre le projet sur",
         "Write to me directly": "Écrivez-moi directement",
         "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
         "Project image pending": "Visuel à venir",
