@@ -172,7 +172,7 @@
       <header class="topbar">
         <nav class="topnav" aria-label="Main navigation"><a href="/">Home</a><a href="/contact">Contact</a></nav>
         <a class="logo" href="/" aria-label="Chloé Bastianon, home"><span class="logo-name">Chloé<br>Bastianon</span><span class="logo-role">identity strategy &amp; creative direction</span></a>
-        <div class="topbar-right"><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang-sep" aria-hidden="true">/</span><button type="button" data-lang="fr" aria-pressed="false">FR</button></div><nav class="topnav" aria-label="Categories"><a href="/artists">Artists</a><a href="/brands">Brands</a></nav></div>
+        <div class="topbar-right"><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang-sep" aria-hidden="true">/</span><button type="button" data-lang="fr" aria-pressed="false">FR</button></div><nav class="topnav" aria-label="Categories"><a href="/artists">Artists</a><a href="/blog">Blog</a></nav></div>
       </header>
 
       <section class="view" id="artists" aria-labelledby="artists-title">
@@ -180,11 +180,11 @@
         <article class="project"><a class="project-link" href="/artists/neen" aria-label="View the neen project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/neen-1.jpg" alt="neen, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/neen-2.jpg" alt="neen, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Neen</h2><p class="project-description">An artist that blends indie pop with human complexity and the organic world.</p></div></a></article>
         <article class="project"><a class="project-link" href="/artists/eliott-ray" aria-label="View the Eliott Ray project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Eliott Ray</h2><p class="project-description">An artist that makes intimate, electric and unapologetically sensitive alternative pop.</p></div></a></article>
         <article class="project"><a class="project-link" href="/artists/suze" aria-label="View the SuZe project"><div class="project-gallery"><div class="project-visual"><img class="photo raw" src="assets/suze-1.jpg" alt="SuZe, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo raw" src="assets/suze-2.jpg" alt="SuZe, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Suze</h2><p class="project-description">An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop.</p></div></a></article>
+        <article class="project"><a class="project-link" href="/artists/baala" aria-label="View the Baala project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">A fashion brand rooted in Tunisian heritage and the urban life of Paris and London.</p></div></a></article>
       </section>
 
-      <section class="view" id="brands" aria-labelledby="brands-title">
-        <h1 class="category" id="brands-title">Brands</h1>
-        <article class="project"><a class="project-link" href="/brands/baala" aria-label="View the Baala project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/baala-1.jpg" alt="Baala, visual 1" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/baala-2.jpg" alt="Baala, visual 2" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Baala</h2><p class="project-description">A fashion brand rooted in Tunisian heritage and the urban life of Paris and London.</p></div></a></article>
+      <section class="view" id="blog" aria-labelledby="blog-title">
+        <h1 class="category" id="blog-title">Blog</h1>
         <article class="project"><a class="project-link" href="/brands/pollen" aria-label="View the pollen project"><div class="project-gallery"><div class="project-visual"><img class="photo" src="assets/pollen-1.jpg" alt="pollen, café interior with the wooden counter and embroidered door panel" loading="lazy"></div><div class="project-visual"><img class="photo" src="assets/pollen-2.jpg" alt="pollen, room with the pink curtain, bottles and wooden tables" loading="lazy"></div></div><div class="project-meta"><h2 class="project-name">Pollen</h2><p class="project-description">A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths.</p></div></a></article>
       </section>
 
@@ -215,7 +215,7 @@
         <h1 id="home-title" hidden>Chloé Bastianon, home</h1>
         <div class="mosaic">
           <a class="tile" href="/artists"><img class="photo" src="assets/home-1.jpg" alt="Artists" loading="eager"><span class="tile-label">Artists</span></a>
-          <a class="tile" href="/brands"><img class="photo" src="assets/home-2.jpg" alt="Brands" loading="eager"><span class="tile-label">Brands</span></a>
+          <a class="tile" href="/blog"><img class="photo" src="assets/home-2.jpg" alt="Blog" loading="eager"><span class="tile-label">Blog</span></a>
         </div>
       </section>
 
@@ -390,7 +390,6 @@
       var I18N = {
         "Home": "Accueil",
         "Artists": "Artistes",
-        "Brands": "Marques",
         "identity strategy & creative direction": "stratégie d'identité & direction créative",
         "Main navigation": "Navigation principale",
         "Categories": "Catégories",
@@ -516,10 +515,12 @@
       // Aperçu local (fichier ouvert directement) : l'URL ne bouge pas, la navigation reste en mémoire
       var apercuLocal = (location.protocol === 'file:');
       var cheminLocal = '/';
+      // Anciennes adresses de la rubrique « brands », devenue « blog »
+      var ANCIENNES = { '/brands': '/blog', '/brands/baala': '/artists/baala', '/brands/pollen': '/blog/pollen' };
       // Aperçu local : un ancien lien en dièse (#artists) ouvre la bonne page, puis l'URL est nettoyée si le navigateur le permet
       if (apercuLocal && location.hash.length > 1) {
         var ancienLocal = location.hash.replace(/^#!?/, '').replace(/^\/+/, '');
-        if (/^(artists|brands)\/[a-z0-9-]+$/.test(ancienLocal) || document.getElementById(ancienLocal)) { cheminLocal = ancienLocal; }
+        if (/^(artists|blog)\/[a-z0-9-]+$/.test(ancienLocal) || document.getElementById(ancienLocal)) { cheminLocal = ancienLocal; }
         try { history.replaceState(null, '', location.pathname); } catch (e) {}
       }
       function cheminActuel() {
@@ -529,7 +530,7 @@
       // Routes : /artists/neen -> vue #project-neen ; la rubrique parente reste active
       function resolveRoute(path) {
         var raw = (path || '/').replace(/^\/+/, '').replace(/\/+$/, '').toLowerCase();
-        var m = /^(artists|brands)\/([a-z0-9-]+)$/.exec(raw);
+        var m = /^(artists|blog)\/([a-z0-9-]+)$/.exec(raw);
         if (m) { return { id: 'project-' + m[2], nav: '/' + m[1] }; }
         if (!raw || raw === 'home') { return { id: 'home', nav: '/' }; }
         return { id: raw, nav: '/' + raw };
@@ -573,11 +574,17 @@
       // Anciens liens partagés avec dièse : /#artists/neen devient /artists/neen
       if (!apercuLocal && location.hash.length > 1) {
         var ancien = location.hash.replace('#', '').replace(/^\/+/, '');
-        goTo((!ancien || ancien === 'home') ? '/' : '/' + ancien);
+        var cible = (!ancien || ancien === 'home') ? '/' : ('/' + ancien);
+        goTo(ANCIENNES[cible] || cible);
       }
       // Adresses servies depuis un dossier (/artists/neen/) : on retire la barre oblique finale
       if (!apercuLocal && /^\/.+\/$/.test(location.pathname)) {
         try { history.replaceState(null, '', location.pathname.replace(/\/+$/, '') + location.search); } catch (e) {}
+      }
+      // Liens déjà partagés vers /brands : redirection silencieuse vers la nouvelle adresse
+      if (!apercuLocal) {
+        var redirection = ANCIENNES[location.pathname.replace(/\/+$/, '')];
+        if (redirection) { try { history.replaceState(null, '', redirection); } catch (e) {} }
       }
       window.addEventListener('popstate', function () { showView(cheminActuel()); });
       document.addEventListener('DOMContentLoaded', function () { showView(cheminActuel()); });

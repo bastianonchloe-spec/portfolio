@@ -23,13 +23,13 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ADRESSES = [
     "artists",
-    "brands",
+    "blog",
     "contact",
     "artists/neen",
     "artists/eliott-ray",
     "artists/suze",
-    "brands/baala",
-    "brands/pollen",
+    "artists/baala",
+    "blog/pollen",
 ]
 
 
