@@ -74,7 +74,6 @@
       .brand-coeur { background: radial-gradient(circle at 54% 65%, #ff7172 0 9%, transparent 9.2%), radial-gradient(circle at 65% 65%, #ffc2c2 0 8%, transparent 8.2%), linear-gradient(0deg, transparent 0 20%, rgba(255,255,255,.5) 20% 22%, transparent 22%), #dedddb; }
       .pending::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 12px; font-family: Oswald, sans-serif; letter-spacing: .05em; text-transform: uppercase; }
       .contact-box { max-width: 920px; margin: 0 auto; padding: 0 20px 60px; text-align: center; }
-      .contact-note { margin: 70px 0 0; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
       .contact-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; margin-top: 0; }
       .contact-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
@@ -118,6 +117,8 @@
       .pp-img { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 10; }
       .pp-mood { color: var(--accent); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; transition: color .18s ease, opacity .18s ease; }
       .pp-mood:hover, .pp-mood:focus-visible { color: var(--accent-deep); opacity: .88; }
+      .pp-mood.is-deep { color: var(--accent-deep); }
+      .pp-mood.is-deep:hover, .pp-mood.is-deep:focus-visible { color: var(--accent-deep); opacity: .72; }
       .pp-video-wrap { margin: var(--pp-vgap, 8px) 0 0; padding: 0 var(--gutter); }
       .pp-video { position: relative; overflow: hidden; background: #ececea; aspect-ratio: 16 / 9; }
       .pp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -197,21 +198,20 @@
         <div class="contact-box">
           <div class="contact-cols">
             <div class="contact-col">
-              <p class="contact-col-title">Book a 30-minute call with me</p>
               <a class="contact-star is-pink" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
                 <img src="assets/star-pink.png" alt="" width="576" height="576">
                 <span>Calendar</span>
               </a>
+              <p class="contact-col-title">Book a 30 min</p>
             </div>
             <div class="contact-col">
-              <p class="contact-col-title">Write to me directly</p>
               <a class="contact-star is-black" href="mailto:bastianon.chloe@gmail.com">
                 <img src="assets/star-black.png" alt="" width="576" height="576">
                 <span>Mail</span>
               </a>
+              <p class="contact-col-title">Write to me</p>
             </div>
           </div>
-          <p class="contact-note">For artists and brands who want to clarify their intentions and find their deep identity.</p>
         </div>
       </section>
 
@@ -278,7 +278,8 @@
           </header>
           <div class="pp-zig">
             <div class="pp-cell is-text">
-              <p class="pp-copy">An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy.</p>
+              <p class="pp-copy">Eliott Ray creates electronic pop-rock where musical energy meets emotional intensity. A highly sensitive artist, he explores contradictions, romantic relationships, social norms and the place each of us seeks to claim in the world. His artistic approach is built on a constant tension between movement and introspection, strength and vulnerability, embracing a sensitive form of masculinity that refuses to conform to expectations.</p>
+              <p class="pp-copy">Drawing on his personality and musical intentions, I developed a <a class="pp-mood is-deep" href="https://pin.it/4OkhUpalq" target="_blank" rel="noopener">moodboard</a> to shape his artistic world and establish a deliberate, cohesive identity that reflects his contrasts without smoothing them out. This foundation helped refine his aesthetic, define his communication approach and develop materials consistent with his artistic message. It also informed the art direction of a live session and a one-take music video, extending the directness and intensity of his music into the image and staging.</p>
             </div>
             <figure class="pp-cell is-img">
               <div class="pp-img"><img class="photo" src="assets/eliott-1.jpg" alt="Eliott Ray, frontal black-and-white portrait" loading="lazy"></div>
@@ -287,7 +288,7 @@
               <div class="pp-img"><img class="photo" src="assets/eliott-2.jpg" alt="Eliott Ray, blurred moving silhouette" loading="lazy"></div>
             </figure>
             <div class="pp-cell is-text">
-              <p class="pp-copy">The exploration looked for a way to articulate that contradiction without smoothing it out, and gathered its graphic experimentation, expressive imagery and live performance into a <a class="pp-mood" href="https://pin.it/4OkhUpalq" target="_blank" rel="noopener">mood board</a>. That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.</p>
+              <p class="pp-copy">This work now supports the development of RAYON, his first musical project: six tracks combining electronic energy, introspection and a desire for emancipation. From identity and communication materials to filmed formats, every choice helps shape a distinctive project that remains true to the artist's complexity and his desire to feel deeply and move freely. RAYON, coming soon.</p>
             </div>
           </div>
           <div class="pp-video-wrap">
@@ -419,11 +420,8 @@
         "An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop.": "Un artiste qui enveloppe une étrangeté blonde et une âme cosmovintage dans de l'ultrapop.",
         "A fashion brand rooted in Tunisian heritage and the urban life of Paris and London.": "Une marque de mode ancrée dans l'héritage tunisien et la vie urbaine de Paris et de Londres.",
         "A café in London that blends Danish minimalism with local organic materials, wood and traditional embroidered tablecloths.": "Un café à Londres qui mêle minimalisme nordique, matières locales et organiques, bois et nappes brodées traditionnelles.",
-        "Book a 30-minute call with me": "Réservez un appel de 30 minutes avec moi",
         "Calendar": "Calendrier",
         "Follow the project on": "Suivre le projet sur",
-        "Write to me directly": "Écrivez-moi directement",
-        "For artists and brands who want to clarify their intentions and find their deep identity.": "Pour les artistes et les marques qui veulent clarifier leurs intentions et trouver leur identité profonde.",
         "neen, visual 1": "neen, visuel 1",
         "neen, visual 2": "neen, visuel 2",
         "Eliott Ray, visual 1": "Eliott Ray, visuel 1",
@@ -452,7 +450,6 @@
         "View the SuZe project": "Voir le projet SuZe",
         "View the Baala project": "Voir le projet Baala",
         "View the pollen project": "Voir le projet pollen",
-        "An artist that makes intimate, electric and unapologetically sensitive alternative pop. The ideation started from the tension at the centre of his music: intimate emotions carried by frontal, electric energy.": "Un artiste qui signe une pop alternative intime, électrique et sensible sans excuses. L'idéation est partie de la tension au cœur de sa musique : des émotions intimes portées par une énergie électrique et frontale.",
         "An artist that wraps Blondie weirdness and a cosmovintage soul in ultra-pop. Because the project is still taking shape, the ideation was built as an open system rather than a fixed identity: pop immediacy next to otherworldly references, familiar imagery next to eccentric details, playful energy next to cosmic nostalgia.": "Un artiste qui enveloppe une étrangeté blonde et une âme cosmovintage dans de l'ultrapop. Le projet étant encore en construction, l'idéation a été pensée comme un système ouvert plutôt que comme une identité figée : l'immédiateté pop à côté des références venues d'ailleurs, l'imagerie familière à côté des détails excentriques, l'énergie ludique à côté de la nostalgie cosmique.",
         "The work mapped these recurring contrasts in a": "Le travail a cartographié ces contrastes récurrents dans un",
         ", tested visual directions and kept the strongest ones as possibilities rather than rules. What the direction establishes today is a coherent creative frame, one that can absorb new images, collaborations and formats as SuZe's universe evolves.": ", testé des directions visuelles et retenu les plus fortes comme des possibilités plutôt que comme des règles. Ce que la direction établit aujourd'hui, c'est un cadre créatif cohérent, capable d'accueillir de nouvelles images, collaborations et formats à mesure que l'univers de SuZe se dessine.",
@@ -466,8 +463,12 @@
         "Website": "Site",
         "Download the": "Télécharger le",
         "press kit": "dossier de presse",
-        "The exploration looked for a way to articulate that contradiction without smoothing it out, and gathered its graphic experimentation, expressive imagery and live performance into a": "L'exploration a cherché comment faire coexister sensibilité et intensité sans lisser ni l'une ni l'autre, et a rassemblé son expérimentation graphique, son imagerie expressive et sa scène dans un",
-        ". That path produced a distinctive visual territory that keeps the rawness of the songs while making the artist's singularity more legible. The direction now serves the energy, the vulnerability and the unconventional spirit that define the project.": ". Ce parcours a produit un territoire visuel singulier qui conserve la rugosité des morceaux tout en rendant la singularité de l'artiste plus lisible. La direction sert aujourd'hui l'énergie, la vulnérabilité et l'esprit non conventionnel qui définissent le projet.",
+        "Eliott Ray creates electronic pop-rock where musical energy meets emotional intensity. A highly sensitive artist, he explores contradictions, romantic relationships, social norms and the place each of us seeks to claim in the world. His artistic approach is built on a constant tension between movement and introspection, strength and vulnerability, embracing a sensitive form of masculinity that refuses to conform to expectations.": "Eliott Ray développe une pop/rock électronique où l'énergie de la musique rencontre l'intensité des émotions. Artiste hypersensible, il explore les contradictions, les relations amoureuses, les normes sociales et la place que chacun cherche à prendre. Sa démarche repose sur une tension constante entre mouvement et introspection, puissance et vulnérabilité, avec une masculinité sensible qui refuse de se conformer aux attentes.",
+        "Drawing on his personality and musical intentions, I developed a": "À partir de cette personnalité et de ses intentions musicales, j'ai élaboré un",
+        "to shape his artistic world and establish a deliberate, cohesive identity that reflects his contrasts without smoothing them out. This foundation helped refine his aesthetic, define his communication approach and develop materials consistent with his artistic message. It also informed the art direction of a live session and a one-take music video, extending the directness and intensity of his music into the image and staging.": "pour structurer son imaginaire et définir une ligne identitaire consciente, capable de traduire ses contrastes sans les lisser. Cette base a permis de consolider son esthétique, de préciser les choix de communication et de concevoir des supports cohérents avec son propos. Elle a également guidé la direction artistique d'une live session et d'un clip tourné en plan-séquence, en prolongeant dans l'image et la mise en scène la frontalité et l'intensité de sa musique.",
+        "This work now supports the development of RAYON, his first musical project: six tracks combining electronic energy, introspection and a desire for emancipation. From identity and communication materials to filmed formats, every choice helps shape a distinctive project that remains true to the artist's complexity and his desire to feel deeply and move freely. RAYON, coming soon.": "Ce travail accompagne aujourd'hui le développement de RAYON, son premier projet musical : six titres entre énergie électronique, introspection et désir d'émancipation. De l'identité aux supports de communication, jusqu'aux formats filmés, chaque choix contribue à faire émerger un projet reconnaissable, fidèle à la complexité de l'artiste et à sa volonté de ressentir fort et de bouger librement. RAYON est à découvrir bientôt.",
+        "Book a 30 min": "Réservez un appel de 30 min",
+        "Write to me": "Écrivez-moi",
       };
       var I18N_REV = {};
       Object.keys(I18N).forEach(function (k) { I18N_REV[I18N[k]] = k; });
