@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Extrait les etoiles des visuels d'accueil (home-1.png, home-2.png) en
-calques PNG transparents, puis ecrit le bloc SVG qui les anime.
+calques PNG transparents, puis ecrit le bloc HTML qui les anime.
 
-Chaque etoile devient un sprite independant, superpose exactement sur sa
-position d'origine dans l'image. A l'echelle 1 le sprite recouvre l'etoile
+Chaque etoile devient une image independante, superposee exactement sur sa
+position d'origine dans le visuel. A l'echelle 1 le calque recouvre l'etoile
 d'origine ; l'animation CSS le fait ensuite grandir et retrecir.
 """
 
@@ -98,25 +98,25 @@ def extract_cutout(img, prefix):
     return sprites
 
 
-def svg_block(sprites, rng):
-    lignes = ['<svg class="star-layer" viewBox="0 0 1264 974" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">']
+def html_block(sprites, rng):
+    lignes = ['<div class="star-layer" aria-hidden="true">', '  <div class="star-stage">']
     for s in sprites:
         petit = s["w"] < 90
         if petit:
-            dur = rng.uniform(2.0, 3.4)
-            amp = rng.uniform(1.12, 1.24)
+            dur = rng.uniform(1.8, 2.9)
+            amp = rng.uniform(1.20, 1.32)
         else:
-            dur = rng.uniform(2.6, 4.6)
-            amp = rng.uniform(1.07, 1.16)
+            dur = rng.uniform(2.2, 3.4)
+            amp = rng.uniform(1.14, 1.24)
         delay = -rng.uniform(0, dur)
-        style = "--star-dur:%.2fs;--star-delay:%.2fs;--star-amp:%.3f" % (dur, delay, amp)
-        cx, cy = s["x"] + s["w"] / 2.0, s["y"] + s["h"] / 2.0
+        style = ("left:%.3f%%;top:%.3f%%;width:%.3f%%;--star-dur:%.2fs;"
+                 "--star-delay:%.2fs;--star-amp:%.3f") % (
+            s["x"] / 1264 * 100, s["y"] / 974 * 100, s["w"] / 1264 * 100, dur, delay, amp)
         lignes.append(
-            '  <g transform="translate(%.1f %.1f)"><image class="star" href="assets/stars/%s" '
-            'x="%.1f" y="%.1f" width="%d" height="%d" style="%s"/></g>'
-            % (cx, cy, s["file"], -s["w"] / 2.0, -s["h"] / 2.0, s["w"], s["h"], style)
+            '    <img class="star" src="assets/stars/%s" alt="" width="%d" height="%d" style="%s">'
+            % (s["file"], s["w"], s["h"], style)
         )
-    lignes.append("</svg>")
+    lignes += ["  </div>", "</div>"]
     return "\n".join(lignes)
 
 
@@ -127,7 +127,7 @@ def main():
     for name, extract in (("home-1", extract_pink), ("home-2", extract_cutout)):
         img = np.array(Image.open(os.path.join(RACINE, "assets", name + ".png")).convert("RGBA"))
         sprites = extract(img, name)
-        pages[name] = svg_block(sprites, rng)
+        pages[name] = html_block(sprites, rng)
         print(name, len(sprites), "etoiles")
 
     chemin = os.path.join(RACINE, "index.html")
@@ -140,7 +140,7 @@ def main():
         page = motif.sub(
             lambda _m: "<!-- stars:%s -->%s<!-- /stars:%s -->" % (name, indent, name), page)
     io.open(chemin, "w", encoding="utf-8").write(page)
-    print("calques SVG ecrits dans index.html")
+    print("calques HTML ecrits dans index.html")
 
 
 if __name__ == "__main__":
