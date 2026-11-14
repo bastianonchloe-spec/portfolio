@@ -60,7 +60,7 @@
       .star-stage { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); filter: saturate(1.03) contrast(1.02) sepia(.06); }
       @supports (width: 1cqw) { .star-stage { width: max(100cqw, calc(100cqh * 1.297741)); height: auto; aspect-ratio: 1264 / 974; } }
       .star { position: absolute; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
-      @keyframes star-swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+      @keyframes star-swing { 0%, 100% { transform: rotate(-10deg) scale(var(--hover, 1)); } 50% { transform: rotate(10deg) scale(var(--hover, 1)); } }
       /* Photos réelles : remplissage + grade chaud unifié pour la cohérence */
       .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }\n      .photo.raw { filter: none; }
       .tile-label { position: absolute; left: 18px; bottom: 16px; font-family: Oswald, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
@@ -87,12 +87,11 @@
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
       /* Boutons étoile (page Contact) */
       .contact-star { position: relative; display: block; --hover: 1; }
-      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: contact-star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
       .contact-star span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
       .contact-star.is-pink span { color: #000; }
       .contact-star.is-black span { color: #ff6a94; }
       .contact-star:hover { --hover: 1.05; }
-      @keyframes contact-star-swing { 0%, 100% { transform: rotate(-5deg) scale(var(--hover)); } 50% { transform: rotate(5deg) scale(var(--hover)); } }
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
       /* Bloc projet entièrement cliquable */
@@ -141,9 +140,9 @@
       .pp-link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: opacity .18s ease; }
       .pp-link:hover { opacity: .6; }
       .pp-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; column-gap: 8px; row-gap: 8px; margin: var(--pp-vgap, 8px) 0 0; padding: 0 var(--gutter); }
-      .pp-pin { position: relative; display: block; width: 62.5%; }
-      .pp-pin img { display: block; width: 100%; height: auto; transition: transform .18s ease; }
-      a.pp-pin:hover img { transform: scale(1.03); }
+      .pp-pin { position: relative; display: block; width: 62.5%; --hover: 1; }
+      .pp-pin img { display: block; width: 100%; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      a.pp-pin:hover { --hover: 1.03; }
       a.pp-pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 12px; }
       .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 26%; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(16px, 2.1vw, 32px); font-weight: 600; line-height: 1; letter-spacing: .06em; text-transform: uppercase; text-align: center; color: var(--accent); }
       .pp-foot-links { display: grid; gap: clamp(8px, .9vw, 14px); min-width: 0; }
