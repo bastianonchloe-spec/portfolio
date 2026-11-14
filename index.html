@@ -60,7 +60,7 @@
       .star-stage { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); filter: saturate(1.03) contrast(1.02) sepia(.06); }
       @supports (width: 1cqw) { .star-stage { width: max(100cqw, calc(100cqh * 1.297741)); height: auto; aspect-ratio: 1264 / 974; } }
       .star { position: absolute; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
-      @keyframes star-swing { 0%, 100% { transform: rotate(-15deg); } 50% { transform: rotate(15deg); } }
+      @keyframes star-swing { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
       /* Photos réelles : remplissage + grade chaud unifié pour la cohérence */
       .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }\n      .photo.raw { filter: none; }
       .tile-label { position: absolute; left: 18px; bottom: 16px; font-family: Oswald, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
@@ -92,7 +92,7 @@
       .contact-star.is-pink span { color: #000; }
       .contact-star.is-black span { color: #ff6a94; }
       .contact-star:hover { --hover: 1.05; }
-      @keyframes contact-star-swing { 0%, 100% { transform: rotate(-15deg) scale(var(--hover)); } 50% { transform: rotate(15deg) scale(var(--hover)); } }
+      @keyframes contact-star-swing { 0%, 100% { transform: rotate(-5deg) scale(var(--hover)); } 50% { transform: rotate(5deg) scale(var(--hover)); } }
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
       /* Bloc projet entièrement cliquable */
