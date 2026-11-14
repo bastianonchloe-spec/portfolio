@@ -59,8 +59,8 @@
       .star-layer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
       .star-stage { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); filter: saturate(1.03) contrast(1.02) sepia(.06); }
       @supports (width: 1cqw) { .star-stage { width: max(100cqw, calc(100cqh * 1.297741)); height: auto; aspect-ratio: 1264 / 974; } }
-      .star { position: absolute; height: auto; transform-origin: center; animation: star-zoom var(--star-dur, 2.6s) ease-in-out var(--star-delay, 0s) infinite; }
-      @keyframes star-zoom { 0%, 100% { transform: scale(1); } 50% { transform: scale(var(--star-amp, 1.16)); } }
+      .star { position: absolute; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      @keyframes star-swing { 0%, 100% { transform: rotate(-35deg); } 50% { transform: rotate(35deg); } }
       /* Photos réelles : remplissage + grade chaud unifié pour la cohérence */
       .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }\n      .photo.raw { filter: none; }
       .tile-label { position: absolute; left: 18px; bottom: 16px; font-family: Oswald, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
@@ -87,12 +87,12 @@
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
       /* Boutons étoile (page Contact) */
       .contact-star { position: relative; display: block; --hover: 1; }
-      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: contact-star-zoom var(--star-dur, 3.4s) ease-in-out var(--star-delay, 0s) infinite; }
+      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: contact-star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
       .contact-star span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
       .contact-star.is-pink span { color: #000; }
       .contact-star.is-black span { color: #ff6a94; }
       .contact-star:hover { --hover: 1.05; }
-      @keyframes contact-star-zoom { 0%, 100% { transform: scale(var(--hover)); } 50% { transform: scale(calc(var(--star-amp, 1.07) * var(--hover))); } }
+      @keyframes contact-star-swing { 0%, 100% { transform: rotate(-35deg) scale(var(--hover)); } 50% { transform: rotate(35deg) scale(var(--hover)); } }
       .contact-star:focus-visible { outline: 2px solid var(--ink); outline-offset: 10px; }
       /* Titres de projet cliquables */
       /* Bloc projet entièrement cliquable */
@@ -208,14 +208,14 @@
           <div class="contact-cols">
             <div class="contact-col">
               <a class="contact-star is-pink" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
-                <img src="assets/star-pink.png" alt="" width="576" height="576" style="--star-dur:3.2s;--star-delay:-1.1s;--star-amp:1.08">
+                <img src="assets/star-pink.png" alt="" width="576" height="576" style="--star-dur:3.6s;--star-delay:0s">
                 <span>Calendar</span>
               </a>
               <p class="contact-col-title">Book a 30-minute call with me</p>
             </div>
             <div class="contact-col">
               <a class="contact-star is-black" href="mailto:bastianon.chloe@gmail.com">
-                <img src="assets/star-black.png" alt="" width="576" height="576" style="--star-dur:3.9s;--star-delay:-2.6s;--star-amp:1.1">
+                <img src="assets/star-black.png" alt="" width="576" height="576" style="--star-dur:3.6s;--star-delay:-1.8s">
                 <span>Mail</span>
               </a>
               <p class="contact-col-title">Write to me directly</p>
@@ -227,42 +227,42 @@
       <section class="view is-open" id="home" aria-labelledby="home-title">
         <h1 id="home-title" hidden>Chloé Bastianon, home</h1>
         <div class="mosaic">
-          <a class="tile" href="/artists"><img class="photo" src="assets/home-1.png" alt="Artists" loading="eager"><!-- stars:home-1 -->          <div class="star-layer" aria-hidden="true">
+          <a class="tile" href="/artists"><img class="photo" src="assets/home-1-base.png" alt="Artists" loading="eager"><!-- stars:home-1 -->          <div class="star-layer" aria-hidden="true">
             <div class="star-stage">
-              <img class="star" src="assets/stars/home-1-01.png" alt="" width="195" height="189" style="left:28.877%;top:46.509%;width:15.427%;--star-dur:2.28s;--star-delay:-2.12s;--star-amp:1.195">
-              <img class="star" src="assets/stars/home-1-02.png" alt="" width="101" height="98" style="left:41.139%;top:48.665%;width:7.991%;--star-dur:2.81s;--star-delay:-0.07s;--star-amp:1.153">
-              <img class="star" src="assets/stars/home-1-03.png" alt="" width="194" height="189" style="left:19.858%;top:53.491%;width:15.348%;--star-dur:3.14s;--star-delay:-3.05s;--star-amp:1.164">
-              <img class="star" src="assets/stars/home-1-04.png" alt="" width="194" height="189" style="left:39.161%;top:53.491%;width:15.348%;--star-dur:2.38s;--star-delay:-1.99s;--star-amp:1.225">
-              <img class="star" src="assets/stars/home-1-05.png" alt="" width="101" height="97" style="left:16.851%;top:60.267%;width:7.991%;--star-dur:2.98s;--star-delay:-1.18s;--star-amp:1.194">
-              <img class="star" src="assets/stars/home-1-06.png" alt="" width="194" height="189" style="left:30.854%;top:59.651%;width:15.348%;--star-dur:2.53s;--star-delay:-0.38s;--star-amp:1.164">
-              <img class="star" src="assets/stars/home-1-07.png" alt="" width="96" height="94" style="left:49.604%;top:64.271%;width:7.595%;--star-dur:3.33s;--star-delay:-2.94s;--star-amp:1.197">
-              <img class="star" src="assets/stars/home-1-08.png" alt="" width="194" height="189" style="left:15.506%;top:64.990%;width:15.348%;--star-dur:3.21s;--star-delay:-1.27s;--star-amp:1.232">
-              <img class="star" src="assets/stars/home-1-09.png" alt="" width="194" height="189" style="left:39.161%;top:64.990%;width:15.348%;--star-dur:2.78s;--star-delay:-2.04s;--star-amp:1.218">
-              <img class="star" src="assets/stars/home-1-10.png" alt="" width="101" height="98" style="left:27.057%;top:67.248%;width:7.991%;--star-dur:2.97s;--star-delay:-2.88s;--star-amp:1.238">
-              <img class="star" src="assets/stars/home-1-11.png" alt="" width="195" height="189" style="left:25.475%;top:71.150%;width:15.427%;--star-dur:2.63s;--star-delay:-1.69s;--star-amp:1.158">
-              <img class="star" src="assets/stars/home-1-12.png" alt="" width="194" height="189" style="left:34.810%;top:75.770%;width:15.348%;--star-dur:2.70s;--star-delay:-0.38s;--star-amp:1.229">
-              <img class="star" src="assets/stars/home-1-13.png" alt="" width="101" height="98" style="left:21.835%;top:80.390%;width:7.991%;--star-dur:2.29s;--star-delay:-0.26s;--star-amp:1.162">
-              <img class="star" src="assets/stars/home-1-14.png" alt="" width="100" height="97" style="left:46.835%;top:80.493%;width:7.911%;--star-dur:2.83s;--star-delay:-0.95s;--star-amp:1.236">
-              <img class="star" src="assets/stars/home-1-15.png" alt="" width="99" height="97" style="left:30.301%;top:85.524%;width:7.832%;--star-dur:3.31s;--star-delay:-2.67s;--star-amp:1.154">
+              <img class="star" src="assets/stars/home-1-01.png" alt="" width="195" height="189" style="left:28.877%;top:46.509%;width:15.427%;--star-dur:2.90s;--star-delay:-1.61s">
+              <img class="star" src="assets/stars/home-1-02.png" alt="" width="101" height="98" style="left:41.139%;top:48.665%;width:7.991%;--star-dur:4.29s;--star-delay:-2.17s">
+              <img class="star" src="assets/stars/home-1-03.png" alt="" width="194" height="189" style="left:19.858%;top:53.491%;width:15.348%;--star-dur:3.01s;--star-delay:-0.07s">
+              <img class="star" src="assets/stars/home-1-04.png" alt="" width="194" height="189" style="left:39.161%;top:53.491%;width:15.348%;--star-dur:4.05s;--star-delay:-0.96s">
+              <img class="star" src="assets/stars/home-1-05.png" alt="" width="101" height="97" style="left:16.851%;top:60.267%;width:7.991%;--star-dur:4.35s;--star-delay:-0.67s">
+              <img class="star" src="assets/stars/home-1-06.png" alt="" width="194" height="189" style="left:30.854%;top:59.651%;width:15.348%;--star-dur:4.16s;--star-delay:-3.46s">
+              <img class="star" src="assets/stars/home-1-07.png" alt="" width="96" height="94" style="left:49.604%;top:64.271%;width:7.595%;--star-dur:3.85s;--star-delay:-2.08s">
+              <img class="star" src="assets/stars/home-1-08.png" alt="" width="194" height="189" style="left:15.506%;top:64.990%;width:15.348%;--star-dur:3.44s;--star-delay:-0.93s">
+              <img class="star" src="assets/stars/home-1-09.png" alt="" width="194" height="189" style="left:39.161%;top:64.990%;width:15.348%;--star-dur:3.18s;--star-delay:-0.48s">
+              <img class="star" src="assets/stars/home-1-10.png" alt="" width="101" height="98" style="left:27.057%;top:67.248%;width:7.991%;--star-dur:4.30s;--star-delay:-2.43s">
+              <img class="star" src="assets/stars/home-1-11.png" alt="" width="195" height="189" style="left:25.475%;top:71.150%;width:15.427%;--star-dur:4.22s;--star-delay:-3.56s">
+              <img class="star" src="assets/stars/home-1-12.png" alt="" width="194" height="189" style="left:34.810%;top:75.770%;width:15.348%;--star-dur:4.27s;--star-delay:-1.68s">
+              <img class="star" src="assets/stars/home-1-13.png" alt="" width="101" height="98" style="left:21.835%;top:80.390%;width:7.991%;--star-dur:3.57s;--star-delay:-2.77s">
+              <img class="star" src="assets/stars/home-1-14.png" alt="" width="100" height="97" style="left:46.835%;top:80.493%;width:7.911%;--star-dur:3.97s;--star-delay:-2.54s">
+              <img class="star" src="assets/stars/home-1-15.png" alt="" width="99" height="97" style="left:30.301%;top:85.524%;width:7.832%;--star-dur:4.37s;--star-delay:-4.25s">
             </div>
           </div><!-- /stars:home-1 --><span class="tile-label">Artists</span></a>
-          <a class="tile" href="/blog"><img class="photo" src="assets/home-2.png" alt="Blog" loading="eager"><!-- stars:home-2 -->          <div class="star-layer" aria-hidden="true">
+          <a class="tile" href="/blog"><img class="photo" src="assets/home-2-base.png" alt="Blog" loading="eager"><!-- stars:home-2 -->          <div class="star-layer" aria-hidden="true">
             <div class="star-stage">
-              <img class="star" src="assets/stars/home-2-01.png" alt="" width="194" height="184" style="left:29.035%;top:47.536%;width:15.348%;--star-dur:2.54s;--star-delay:-1.86s;--star-amp:1.155">
-              <img class="star" src="assets/stars/home-2-02.png" alt="" width="100" height="98" style="left:41.218%;top:49.281%;width:7.911%;--star-dur:3.18s;--star-delay:-0.19s;--star-amp:1.163">
-              <img class="star" src="assets/stars/home-2-03.png" alt="" width="194" height="189" style="left:20.016%;top:54.004%;width:15.348%;--star-dur:2.71s;--star-delay:-0.97s;--star-amp:1.191">
-              <img class="star" src="assets/stars/home-2-04.png" alt="" width="191" height="187" style="left:39.320%;top:54.107%;width:15.111%;--star-dur:2.92s;--star-delay:-0.97s;--star-amp:1.225">
-              <img class="star" src="assets/stars/home-2-05.png" alt="" width="92" height="95" style="left:17.563%;top:60.883%;width:7.278%;--star-dur:2.62s;--star-delay:-2.06s;--star-amp:1.216">
-              <img class="star" src="assets/stars/home-2-06.png" alt="" width="194" height="189" style="left:30.934%;top:60.164%;width:15.348%;--star-dur:3.35s;--star-delay:-1.65s;--star-amp:1.240">
-              <img class="star" src="assets/stars/home-2-07.png" alt="" width="99" height="97" style="left:49.525%;top:64.579%;width:7.832%;--star-dur:2.39s;--star-delay:-0.29s;--star-amp:1.189">
-              <img class="star" src="assets/stars/home-2-08.png" alt="" width="184" height="184" style="left:16.297%;top:65.708%;width:14.557%;--star-dur:3.03s;--star-delay:-2.27s;--star-amp:1.204">
-              <img class="star" src="assets/stars/home-2-09.png" alt="" width="191" height="186" style="left:39.320%;top:65.606%;width:15.111%;--star-dur:2.75s;--star-delay:-1.43s;--star-amp:1.217">
-              <img class="star" src="assets/stars/home-2-10.png" alt="" width="100" height="98" style="left:27.215%;top:67.762%;width:7.911%;--star-dur:2.51s;--star-delay:-1.24s;--star-amp:1.201">
-              <img class="star" src="assets/stars/home-2-11.png" alt="" width="194" height="189" style="left:25.633%;top:71.663%;width:15.348%;--star-dur:2.92s;--star-delay:-1.93s;--star-amp:1.234">
-              <img class="star" src="assets/stars/home-2-12.png" alt="" width="194" height="189" style="left:34.889%;top:76.181%;width:15.348%;--star-dur:3.19s;--star-delay:-2.27s;--star-amp:1.210">
-              <img class="star" src="assets/stars/home-2-13.png" alt="" width="100" height="98" style="left:21.994%;top:80.903%;width:7.911%;--star-dur:2.59s;--star-delay:-1.75s;--star-amp:1.229">
-              <img class="star" src="assets/stars/home-2-14.png" alt="" width="101" height="97" style="left:46.835%;top:80.903%;width:7.991%;--star-dur:3.36s;--star-delay:-3.23s;--star-amp:1.155">
-              <img class="star" src="assets/stars/home-2-15.png" alt="" width="100" height="97" style="left:30.380%;top:85.934%;width:7.911%;--star-dur:2.51s;--star-delay:-0.93s;--star-amp:1.222">
+              <img class="star" src="assets/stars/home-2-01.png" alt="" width="194" height="184" style="left:29.035%;top:47.536%;width:15.348%;--star-dur:3.37s;--star-delay:-0.60s">
+              <img class="star" src="assets/stars/home-2-02.png" alt="" width="100" height="98" style="left:41.218%;top:49.281%;width:7.911%;--star-dur:3.83s;--star-delay:-1.61s">
+              <img class="star" src="assets/stars/home-2-03.png" alt="" width="194" height="189" style="left:20.016%;top:54.004%;width:15.348%;--star-dur:4.22s;--star-delay:-0.60s">
+              <img class="star" src="assets/stars/home-2-04.png" alt="" width="191" height="187" style="left:39.320%;top:54.107%;width:15.111%;--star-dur:2.92s;--star-delay:-0.64s">
+              <img class="star" src="assets/stars/home-2-05.png" alt="" width="92" height="95" style="left:17.563%;top:60.883%;width:7.278%;--star-dur:2.98s;--star-delay:-1.57s">
+              <img class="star" src="assets/stars/home-2-06.png" alt="" width="194" height="189" style="left:30.934%;top:60.164%;width:15.348%;--star-dur:4.34s;--star-delay:-1.45s">
+              <img class="star" src="assets/stars/home-2-07.png" alt="" width="99" height="97" style="left:49.525%;top:64.579%;width:7.832%;--star-dur:4.28s;--star-delay:-0.60s">
+              <img class="star" src="assets/stars/home-2-08.png" alt="" width="184" height="184" style="left:16.297%;top:65.708%;width:14.557%;--star-dur:4.09s;--star-delay:-1.15s">
+              <img class="star" src="assets/stars/home-2-09.png" alt="" width="191" height="186" style="left:39.320%;top:65.606%;width:15.111%;--star-dur:3.04s;--star-delay:-2.23s">
+              <img class="star" src="assets/stars/home-2-10.png" alt="" width="100" height="98" style="left:27.215%;top:67.762%;width:7.911%;--star-dur:4.11s;--star-delay:-0.93s">
+              <img class="star" src="assets/stars/home-2-11.png" alt="" width="194" height="189" style="left:25.633%;top:71.663%;width:15.348%;--star-dur:2.90s;--star-delay:-1.22s">
+              <img class="star" src="assets/stars/home-2-12.png" alt="" width="194" height="189" style="left:34.889%;top:76.181%;width:15.348%;--star-dur:3.61s;--star-delay:-1.29s">
+              <img class="star" src="assets/stars/home-2-13.png" alt="" width="100" height="98" style="left:21.994%;top:80.903%;width:7.911%;--star-dur:3.77s;--star-delay:-3.20s">
+              <img class="star" src="assets/stars/home-2-14.png" alt="" width="101" height="97" style="left:46.835%;top:80.903%;width:7.991%;--star-dur:3.33s;--star-delay:-1.18s">
+              <img class="star" src="assets/stars/home-2-15.png" alt="" width="100" height="97" style="left:30.380%;top:85.934%;width:7.911%;--star-dur:4.02s;--star-delay:-3.16s">
             </div>
           </div><!-- /stars:home-2 --><span class="tile-label">Blog</span></a>
         </div>

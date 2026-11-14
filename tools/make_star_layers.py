@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Extrait les etoiles des visuels d'accueil (home-1.png, home-2.png) en
-calques PNG transparents, puis ecrit le bloc HTML qui les anime.
+"""Prepare les etoiles des visuels d'accueil (home-1.png, home-2.png).
 
-Chaque etoile devient une image independante, superposee exactement sur sa
-position d'origine dans le visuel. A l'echelle 1 le calque recouvre l'etoile
-d'origine ; l'animation CSS le fait ensuite grandir et retrecir.
+1. Ecrit une version nettoyee des visuels (assets/home-*-base.png) : les
+   etoiles y sont retirees par inpainting, sinon l'etoile d'origine resterait
+   visible sous le calque qui tourne.
+2. Extrait chaque etoile en PNG transparent (assets/stars/).
+3. Ecrit le bloc HTML qui les anime : rotation gauche/droite, desynchronisee.
 """
 
 import io
@@ -98,20 +99,38 @@ def extract_cutout(img, prefix):
     return sprites
 
 
+def base_pink(img):
+    """home-1 : retire les etoiles rose uni par inpainting."""
+    dist = np.abs(img[:, :, :3].astype(np.float32) - PINK).max(axis=2)
+    mask = cv2.dilate((dist < 60).astype(np.uint8) * 255, np.ones((5, 5), np.uint8), iterations=2)
+    return cv2.inpaint(img[:, :, :3], mask, 7, cv2.INPAINT_TELEA)
+
+
+def base_cutout(img):
+    """home-2 : remplace les etoiles collage par le rose uni du fond."""
+    rgb = img[:, :, :3].astype(np.float32)
+    alpha = np.clip(1.0 - (rgb[:, :, 0] - rgb[:, :, 1]) / 149.0, 0, 1)
+    mask = (alpha > 0.15).astype(np.uint8)
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(mask, 8)
+    gros = np.zeros_like(mask)
+    for i in range(1, n):
+        if stats[i, cv2.CC_STAT_AREA] > 300:
+            gros |= (labels == i).astype(np.uint8)
+    gros = cv2.dilate(gros, np.ones((5, 5), np.uint8), iterations=2)
+    out = img[:, :, :3].copy()
+    out[gros.astype(bool)] = PINK.astype(np.uint8)
+    return out
+
+
 def html_block(sprites, rng):
     lignes = ['<div class="star-layer" aria-hidden="true">', '  <div class="star-stage">']
     for s in sprites:
         petit = s["w"] < 90
-        if petit:
-            dur = rng.uniform(1.8, 2.9)
-            amp = rng.uniform(1.20, 1.32)
-        else:
-            dur = rng.uniform(2.2, 3.4)
-            amp = rng.uniform(1.14, 1.24)
+        dur = rng.uniform(2.4, 3.6) if petit else rng.uniform(2.8, 4.4)
         delay = -rng.uniform(0, dur)
         style = ("left:%.3f%%;top:%.3f%%;width:%.3f%%;--star-dur:%.2fs;"
-                 "--star-delay:%.2fs;--star-amp:%.3f") % (
-            s["x"] / 1264 * 100, s["y"] / 974 * 100, s["w"] / 1264 * 100, dur, delay, amp)
+                 "--star-delay:%.2fs") % (
+            s["x"] / 1264 * 100, s["y"] / 974 * 100, s["w"] / 1264 * 100, dur, delay)
         lignes.append(
             '    <img class="star" src="assets/stars/%s" alt="" width="%d" height="%d" style="%s">'
             % (s["file"], s["w"], s["h"], style)
@@ -124,8 +143,13 @@ def main():
     os.makedirs(DOSSIER, exist_ok=True)
     rng = random.Random(SEED)
     pages = {}
-    for name, extract in (("home-1", extract_pink), ("home-2", extract_cutout)):
+    for name, extract, fond in (
+        ("home-1", extract_pink, base_pink),
+        ("home-2", extract_cutout, base_cutout),
+    ):
         img = np.array(Image.open(os.path.join(RACINE, "assets", name + ".png")).convert("RGBA"))
+        base = fond(img)
+        Image.fromarray(base).save(os.path.join(RACINE, "assets", name + "-base.png"), optimize=True)
         sprites = extract(img, name)
         pages[name] = html_block(sprites, rng)
         print(name, len(sprites), "etoiles")
