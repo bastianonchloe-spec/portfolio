@@ -59,7 +59,7 @@
       .star-layer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
       .star-stage { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); filter: saturate(1.03) contrast(1.02) sepia(.06); }
       @supports (width: 1cqw) { .star-stage { width: max(100cqw, calc(100cqh * 1.297741)); height: auto; aspect-ratio: 1264 / 974; } }
-      .star { position: absolute; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      .star { position: absolute; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 2.2s) ease-in-out var(--star-delay, 0s) infinite; }
       @keyframes star-swing { 0%, 100% { transform: rotate(-10deg) scale(var(--hover, 1)); } 50% { transform: rotate(10deg) scale(var(--hover, 1)); } }
       /* Photos réelles : remplissage + grade chaud unifié pour la cohérence */
       .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.03) contrast(1.02) sepia(.06); }\n      .photo.raw { filter: none; }
@@ -87,7 +87,7 @@
       .contact-col-title { margin: 0; font-family: Oswald, Arial Narrow, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
       /* Boutons étoile (page Contact) */
       .contact-star { position: relative; display: block; --hover: 1; }
-      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      .contact-star img { display: block; width: clamp(210px, 25vw, 390px); height: auto; animation: star-swing var(--star-dur, 2.2s) ease-in-out var(--star-delay, 0s) infinite; }
       .contact-star span { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(2.6%); font-family: Oswald, sans-serif; font-size: 17px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
       .contact-star.is-pink span { color: #000; }
       .contact-star.is-black span { color: #ff6a94; }
@@ -141,7 +141,7 @@
       .pp-link:hover { opacity: .6; }
       .pp-foot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; column-gap: 8px; row-gap: 8px; margin: var(--pp-vgap, 8px) 0 0; padding: 0 var(--gutter); }
       .pp-pin { position: relative; display: block; width: 62.5%; --hover: 1; }
-      .pp-pin img { display: block; width: 100%; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 3.6s) ease-in-out var(--star-delay, 0s) infinite; }
+      .pp-pin img { display: block; width: 100%; height: auto; transform-origin: center; animation: star-swing var(--star-dur, 2.2s) ease-in-out var(--star-delay, 0s) infinite; }
       a.pp-pin:hover { --hover: 1.03; }
       a.pp-pin:focus-visible { outline: 2px solid var(--ink); outline-offset: 12px; }
       .pp-pin span { position: absolute; inset: 0; display: grid; place-items: center; padding: 0 26%; transform: translateY(2.6%); font-family: Oswald, Arial Narrow, sans-serif; font-size: clamp(16px, 2.1vw, 32px); font-weight: 600; line-height: 1; letter-spacing: .06em; text-transform: uppercase; text-align: center; color: var(--accent); }
@@ -207,14 +207,14 @@
           <div class="contact-cols">
             <div class="contact-col">
               <a class="contact-star is-pink" href="https://calendar.app.google/j7dhCFC3YetkjQyv9" target="_blank" rel="noopener">
-                <img src="assets/star-pink.png" alt="" width="576" height="576" style="--star-dur:3.6s;--star-delay:0s">
+                <img src="assets/star-pink.png" alt="" width="576" height="576" style="--star-dur:2.2s;--star-delay:0s">
                 <span>Calendar</span>
               </a>
               <p class="contact-col-title">Book a 30-minute call with me</p>
             </div>
             <div class="contact-col">
               <a class="contact-star is-black" href="mailto:bastianon.chloe@gmail.com">
-                <img src="assets/star-black.png" alt="" width="576" height="576" style="--star-dur:3.6s;--star-delay:-1.8s">
+                <img src="assets/star-black.png" alt="" width="576" height="576" style="--star-dur:2.2s;--star-delay:-1.1s">
                 <span>Mail</span>
               </a>
               <p class="contact-col-title">Write to me directly</p>
@@ -228,40 +228,40 @@
         <div class="mosaic">
           <a class="tile" href="/artists"><img class="photo" src="assets/home-1-base.png" alt="Artists" loading="eager"><!-- stars:home-1 -->          <div class="star-layer" aria-hidden="true">
             <div class="star-stage">
-              <img class="star" src="assets/stars/home-1-01.png" alt="" width="195" height="189" style="left:28.877%;top:46.509%;width:15.427%;--star-dur:2.90s;--star-delay:-1.61s">
-              <img class="star" src="assets/stars/home-1-02.png" alt="" width="101" height="98" style="left:41.139%;top:48.665%;width:7.991%;--star-dur:4.29s;--star-delay:-2.17s">
-              <img class="star" src="assets/stars/home-1-03.png" alt="" width="194" height="189" style="left:19.858%;top:53.491%;width:15.348%;--star-dur:3.01s;--star-delay:-0.07s">
-              <img class="star" src="assets/stars/home-1-04.png" alt="" width="194" height="189" style="left:39.161%;top:53.491%;width:15.348%;--star-dur:4.05s;--star-delay:-0.96s">
-              <img class="star" src="assets/stars/home-1-05.png" alt="" width="101" height="97" style="left:16.851%;top:60.267%;width:7.991%;--star-dur:4.35s;--star-delay:-0.67s">
-              <img class="star" src="assets/stars/home-1-06.png" alt="" width="194" height="189" style="left:30.854%;top:59.651%;width:15.348%;--star-dur:4.16s;--star-delay:-3.46s">
-              <img class="star" src="assets/stars/home-1-07.png" alt="" width="96" height="94" style="left:49.604%;top:64.271%;width:7.595%;--star-dur:3.85s;--star-delay:-2.08s">
-              <img class="star" src="assets/stars/home-1-08.png" alt="" width="194" height="189" style="left:15.506%;top:64.990%;width:15.348%;--star-dur:3.44s;--star-delay:-0.93s">
-              <img class="star" src="assets/stars/home-1-09.png" alt="" width="194" height="189" style="left:39.161%;top:64.990%;width:15.348%;--star-dur:3.18s;--star-delay:-0.48s">
-              <img class="star" src="assets/stars/home-1-10.png" alt="" width="101" height="98" style="left:27.057%;top:67.248%;width:7.991%;--star-dur:4.30s;--star-delay:-2.43s">
-              <img class="star" src="assets/stars/home-1-11.png" alt="" width="195" height="189" style="left:25.475%;top:71.150%;width:15.427%;--star-dur:4.22s;--star-delay:-3.56s">
-              <img class="star" src="assets/stars/home-1-12.png" alt="" width="194" height="189" style="left:34.810%;top:75.770%;width:15.348%;--star-dur:4.27s;--star-delay:-1.68s">
-              <img class="star" src="assets/stars/home-1-13.png" alt="" width="101" height="98" style="left:21.835%;top:80.390%;width:7.991%;--star-dur:3.57s;--star-delay:-2.77s">
-              <img class="star" src="assets/stars/home-1-14.png" alt="" width="100" height="97" style="left:46.835%;top:80.493%;width:7.911%;--star-dur:3.97s;--star-delay:-2.54s">
-              <img class="star" src="assets/stars/home-1-15.png" alt="" width="99" height="97" style="left:30.301%;top:85.524%;width:7.832%;--star-dur:4.37s;--star-delay:-4.25s">
+              <img class="star" src="assets/stars/home-1-01.png" alt="" width="195" height="189" style="left:28.877%;top:46.509%;width:15.427%;--star-dur:1.76s;--star-delay:-0.97s">
+              <img class="star" src="assets/stars/home-1-02.png" alt="" width="101" height="98" style="left:41.139%;top:48.665%;width:7.991%;--star-dur:2.58s;--star-delay:-1.31s">
+              <img class="star" src="assets/stars/home-1-03.png" alt="" width="194" height="189" style="left:19.858%;top:53.491%;width:15.348%;--star-dur:1.82s;--star-delay:-0.04s">
+              <img class="star" src="assets/stars/home-1-04.png" alt="" width="194" height="189" style="left:39.161%;top:53.491%;width:15.348%;--star-dur:2.44s;--star-delay:-0.58s">
+              <img class="star" src="assets/stars/home-1-05.png" alt="" width="101" height="97" style="left:16.851%;top:60.267%;width:7.991%;--star-dur:2.62s;--star-delay:-0.40s">
+              <img class="star" src="assets/stars/home-1-06.png" alt="" width="194" height="189" style="left:30.854%;top:59.651%;width:15.348%;--star-dur:2.51s;--star-delay:-2.09s">
+              <img class="star" src="assets/stars/home-1-07.png" alt="" width="96" height="94" style="left:49.604%;top:64.271%;width:7.595%;--star-dur:2.32s;--star-delay:-1.25s">
+              <img class="star" src="assets/stars/home-1-08.png" alt="" width="194" height="189" style="left:15.506%;top:64.990%;width:15.348%;--star-dur:2.08s;--star-delay:-0.56s">
+              <img class="star" src="assets/stars/home-1-09.png" alt="" width="194" height="189" style="left:39.161%;top:64.990%;width:15.348%;--star-dur:1.93s;--star-delay:-0.29s">
+              <img class="star" src="assets/stars/home-1-10.png" alt="" width="101" height="98" style="left:27.057%;top:67.248%;width:7.991%;--star-dur:2.59s;--star-delay:-1.46s">
+              <img class="star" src="assets/stars/home-1-11.png" alt="" width="195" height="189" style="left:25.475%;top:71.150%;width:15.427%;--star-dur:2.54s;--star-delay:-2.15s">
+              <img class="star" src="assets/stars/home-1-12.png" alt="" width="194" height="189" style="left:34.810%;top:75.770%;width:15.348%;--star-dur:2.57s;--star-delay:-1.01s">
+              <img class="star" src="assets/stars/home-1-13.png" alt="" width="101" height="98" style="left:21.835%;top:80.390%;width:7.991%;--star-dur:2.16s;--star-delay:-1.67s">
+              <img class="star" src="assets/stars/home-1-14.png" alt="" width="100" height="97" style="left:46.835%;top:80.493%;width:7.911%;--star-dur:2.40s;--star-delay:-1.53s">
+              <img class="star" src="assets/stars/home-1-15.png" alt="" width="99" height="97" style="left:30.301%;top:85.524%;width:7.832%;--star-dur:2.63s;--star-delay:-2.56s">
             </div>
           </div><!-- /stars:home-1 --><span class="tile-label">Artists</span></a>
           <a class="tile" href="/blog"><img class="photo" src="assets/home-2-base.png" alt="Blog" loading="eager"><!-- stars:home-2 -->          <div class="star-layer" aria-hidden="true">
             <div class="star-stage">
-              <img class="star" src="assets/stars/home-2-01.png" alt="" width="194" height="184" style="left:29.035%;top:47.536%;width:15.348%;--star-dur:3.37s;--star-delay:-0.60s">
-              <img class="star" src="assets/stars/home-2-02.png" alt="" width="100" height="98" style="left:41.218%;top:49.281%;width:7.911%;--star-dur:3.83s;--star-delay:-1.61s">
-              <img class="star" src="assets/stars/home-2-03.png" alt="" width="194" height="189" style="left:20.016%;top:54.004%;width:15.348%;--star-dur:4.22s;--star-delay:-0.60s">
-              <img class="star" src="assets/stars/home-2-04.png" alt="" width="191" height="187" style="left:39.320%;top:54.107%;width:15.111%;--star-dur:2.92s;--star-delay:-0.64s">
-              <img class="star" src="assets/stars/home-2-05.png" alt="" width="92" height="95" style="left:17.563%;top:60.883%;width:7.278%;--star-dur:2.98s;--star-delay:-1.57s">
-              <img class="star" src="assets/stars/home-2-06.png" alt="" width="194" height="189" style="left:30.934%;top:60.164%;width:15.348%;--star-dur:4.34s;--star-delay:-1.45s">
-              <img class="star" src="assets/stars/home-2-07.png" alt="" width="99" height="97" style="left:49.525%;top:64.579%;width:7.832%;--star-dur:4.28s;--star-delay:-0.60s">
-              <img class="star" src="assets/stars/home-2-08.png" alt="" width="184" height="184" style="left:16.297%;top:65.708%;width:14.557%;--star-dur:4.09s;--star-delay:-1.15s">
-              <img class="star" src="assets/stars/home-2-09.png" alt="" width="191" height="186" style="left:39.320%;top:65.606%;width:15.111%;--star-dur:3.04s;--star-delay:-2.23s">
-              <img class="star" src="assets/stars/home-2-10.png" alt="" width="100" height="98" style="left:27.215%;top:67.762%;width:7.911%;--star-dur:4.11s;--star-delay:-0.93s">
-              <img class="star" src="assets/stars/home-2-11.png" alt="" width="194" height="189" style="left:25.633%;top:71.663%;width:15.348%;--star-dur:2.90s;--star-delay:-1.22s">
-              <img class="star" src="assets/stars/home-2-12.png" alt="" width="194" height="189" style="left:34.889%;top:76.181%;width:15.348%;--star-dur:3.61s;--star-delay:-1.29s">
-              <img class="star" src="assets/stars/home-2-13.png" alt="" width="100" height="98" style="left:21.994%;top:80.903%;width:7.911%;--star-dur:3.77s;--star-delay:-3.20s">
-              <img class="star" src="assets/stars/home-2-14.png" alt="" width="101" height="97" style="left:46.835%;top:80.903%;width:7.991%;--star-dur:3.33s;--star-delay:-1.18s">
-              <img class="star" src="assets/stars/home-2-15.png" alt="" width="100" height="97" style="left:30.380%;top:85.934%;width:7.911%;--star-dur:4.02s;--star-delay:-3.16s">
+              <img class="star" src="assets/stars/home-2-01.png" alt="" width="194" height="184" style="left:29.035%;top:47.536%;width:15.348%;--star-dur:2.04s;--star-delay:-0.36s">
+              <img class="star" src="assets/stars/home-2-02.png" alt="" width="100" height="98" style="left:41.218%;top:49.281%;width:7.911%;--star-dur:2.31s;--star-delay:-0.97s">
+              <img class="star" src="assets/stars/home-2-03.png" alt="" width="194" height="189" style="left:20.016%;top:54.004%;width:15.348%;--star-dur:2.54s;--star-delay:-0.36s">
+              <img class="star" src="assets/stars/home-2-04.png" alt="" width="191" height="187" style="left:39.320%;top:54.107%;width:15.111%;--star-dur:1.77s;--star-delay:-0.39s">
+              <img class="star" src="assets/stars/home-2-05.png" alt="" width="92" height="95" style="left:17.563%;top:60.883%;width:7.278%;--star-dur:1.81s;--star-delay:-0.95s">
+              <img class="star" src="assets/stars/home-2-06.png" alt="" width="194" height="189" style="left:30.934%;top:60.164%;width:15.348%;--star-dur:2.62s;--star-delay:-0.87s">
+              <img class="star" src="assets/stars/home-2-07.png" alt="" width="99" height="97" style="left:49.525%;top:64.579%;width:7.832%;--star-dur:2.58s;--star-delay:-0.36s">
+              <img class="star" src="assets/stars/home-2-08.png" alt="" width="184" height="184" style="left:16.297%;top:65.708%;width:14.557%;--star-dur:2.47s;--star-delay:-0.69s">
+              <img class="star" src="assets/stars/home-2-09.png" alt="" width="191" height="186" style="left:39.320%;top:65.606%;width:15.111%;--star-dur:1.84s;--star-delay:-1.35s">
+              <img class="star" src="assets/stars/home-2-10.png" alt="" width="100" height="98" style="left:27.215%;top:67.762%;width:7.911%;--star-dur:2.48s;--star-delay:-0.56s">
+              <img class="star" src="assets/stars/home-2-11.png" alt="" width="194" height="189" style="left:25.633%;top:71.663%;width:15.348%;--star-dur:1.76s;--star-delay:-0.74s">
+              <img class="star" src="assets/stars/home-2-12.png" alt="" width="194" height="189" style="left:34.889%;top:76.181%;width:15.348%;--star-dur:2.18s;--star-delay:-0.78s">
+              <img class="star" src="assets/stars/home-2-13.png" alt="" width="100" height="98" style="left:21.994%;top:80.903%;width:7.911%;--star-dur:2.27s;--star-delay:-1.93s">
+              <img class="star" src="assets/stars/home-2-14.png" alt="" width="101" height="97" style="left:46.835%;top:80.903%;width:7.991%;--star-dur:2.02s;--star-delay:-0.71s">
+              <img class="star" src="assets/stars/home-2-15.png" alt="" width="100" height="97" style="left:30.380%;top:85.934%;width:7.911%;--star-dur:2.42s;--star-delay:-1.90s">
             </div>
           </div><!-- /stars:home-2 --><span class="tile-label">Blog</span></a>
         </div>

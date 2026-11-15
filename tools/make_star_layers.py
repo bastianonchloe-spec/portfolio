@@ -126,7 +126,7 @@ def html_block(sprites, rng):
     lignes = ['<div class="star-layer" aria-hidden="true">', '  <div class="star-stage">']
     for s in sprites:
         petit = s["w"] < 90
-        dur = rng.uniform(2.4, 3.6) if petit else rng.uniform(2.8, 4.4)
+        dur = rng.uniform(1.45, 2.15) if petit else rng.uniform(1.7, 2.65)
         delay = -rng.uniform(0, dur)
         style = ("left:%.3f%%;top:%.3f%%;width:%.3f%%;--star-dur:%.2fs;"
                  "--star-delay:%.2fs") % (
